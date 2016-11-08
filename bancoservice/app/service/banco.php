@@ -66,10 +66,11 @@ $app->get("/banco",function() use($app){
                 $sth->bindParam("vision", $input['vision']);
                 $sth->bindParam("mision", $input['mision']);
                 $sth->execute();
+                 $connection=null;  
                 $resultado = $connection->lastInsertId();
                 $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
                 $app->withJSON($resultado,200);
-                $connection=null;
+               
             }
         }catch(PDOException $e){
              $resultado=array('resultado' => false, 'mensaje' =>$e->getMessage());
@@ -92,36 +93,20 @@ $app->put('/banco', function () use($app) {
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para modificar los datos del banco.');
                 $app->withJSON($resultado,400);
             }else{
-                $connection= getConnection();
-               	$sth = $connection->prepare("select * FROM webmaster w join acceso a on a.persona=w.admin WHERE w.admin=" . $input["usuario"] ." and a.password='" .$input["password"] . "'");
-               	$sth->execute();
-               	$admin= (array)$sth->fetchObject();
-               	if (isset($admin["admin"]) && $admin["admin"] == $input["usuario"]) {
-               		$sth = $connection->prepare("select * FROM banco WHERE id=" . $input["id"]);
-	                $sth->execute();
-	                $resultado=(array) $sth->fetchObject(); 
-	                if (isset($resultado["nombre"])) {
-	                    $sql = "UPDATE banco SET nombre=:nombre,nit=:nit,vision=:vision,mision=:mision,sede=:sede WHERE id=:id";
-	                    $sth = $connection->prepare($sql);
-	                    $sth->bindParam("id", $input['id']);
-	                    $sth->bindParam("nombre", $input['nombre']);
-	                    $sth->bindParam("nit", $input['nit']);
-	                    $sth->bindParam("vision", $input['vision']);
-	                    $sth->bindParam("mision", $input['mision']);
-	                    $sth->bindParam("sede", $input['sede']);
-	                    $sth->execute();
-	                    $resultado=array('resultado' =>true, 'mensaje' =>'Los datos del banco fueron modificados correctamente.' );
-	                    $app->withJSON($resultado,200);
-	                }else{
-	                    $resultado=array('resultado' => false, 'mensaje' =>'No hay datos registrados para el banco '. $input["id"].', imposible actualizar.' );
-	                    $app->withJSON($resultado,400);
-	                }   
-               	}else{
-               		$resultado=array('resultado' => false, 'mensaje' =>'Debe autenticarse como webmaster para poder actualizar los datos del banco' );
-	                $app->withJSON($resultado,400);
-               	}
-                
-                $connection=null;
+                $connection= getConnection();               	
+                $sql = "UPDATE banco SET nombre=:nombre,nit=:nit,vision=:vision,mision=:mision,sede=:sede WHERE id=:id";
+                $sth = $connection->prepare($sql);
+                $sth->bindParam("id", $input['id']);
+                $sth->bindParam("nombre", $input['nombre']);
+                $sth->bindParam("nit", $input['nit']);
+                $sth->bindParam("vision", $input['vision']);
+                $sth->bindParam("mision", $input['mision']);
+                $sth->bindParam("sede", $input['sede']);
+                $sth->execute();
+                $connection=null;  
+                $resultado = $connection->lastInsertId();
+                $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
+                $app->withJSON($resultado,200);                
             }
         }catch(PDOException $e){
              $resultado=array('resultado' => false, 'mensaje' =>$e->getMessage());
