@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E2AF8E05-98EA-13C5-611B-B139C08D0E7E" name="`cuentas`">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>FF54B138-F818-3B14-F2DE-F45F8B3EEB18</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="`numero_cuenta`" id="BB4CF6F0-699C-1CFC-3063-279266F440F1">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>6C0CD3DF-2014-F9A0-CA40-D50873F5C421</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`tipo_cuenta`" id="35283AE7-8563-58EB-30B3-23F83333EB2D">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>F3BF1E49-472E-B529-2A2B-B596264107BF</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>14676ECE-AFC4-062D-E789-62F1CC6B9B0C</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5D73A42D-B0D2-EE5F-4F70-F0784FE0FD30" referredColumn="14676ECE-AFC4-062D-E789-62F1CC6B9B0C"/>
+</associations>
+</Column>
+<Column name="`asesor`" id="1432753B-0152-1121-6DEB-A0F37010512D">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>6B3EE62D-6507-902C-0D9C-C9DBCC95626E</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>E3498AF6-95A1-08AB-E335-4F0F2F9D28CD</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D686BDB9-9153-2074-07B0-703800265697" referredColumn="E3498AF6-95A1-08AB-E335-4F0F2F9D28CD"/>
+</associations>
+</Column>
+<Column name="`cliente`" id="02CEBFA9-1EFF-9446-7E10-8712AAAB6F05">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>12A1A72B-E183-DAB7-010A-DE5C42E219CE</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>E3498AF6-95A1-08AB-E335-4F0F2F9D28CD</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A7AA4EA7-1332-6267-3F28-776652C178F3" referredColumn="E3498AF6-95A1-08AB-E335-4F0F2F9D28CD"/>
+</associations>
+</Column>
+<Column name="`contraseÃ±a`" id="6B2EC514-B410-4462-8E4F-BE8665E33415">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>BB6107E9-5A82-33F8-1CFC-551B09BEE4FC</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>C008BE34-225C-85B9-A351-CD04430F5BD3</domain>
+<defaultValue>&apos;NULL&apos;</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`monto`" id="620B7672-18F7-3D16-A4EF-468720C03218">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>57C4C44A-FB16-8054-CE93-88C0DA3BB2F7</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<defaultValue>0</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DF234EB6-729A-3D90-4F54-11D8A7AAD365" name="`cuentas`_PK">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>7D22036A-0001-E42D-AD75-AA63123D3C6E</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BB4CF6F0-699C-1CFC-3063-279266F440F1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DA092F6D-8406-7913-63D3-36A2F6C98B29" name="`cuentas`_FK0">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35283AE7-8563-58EB-30B3-23F83333EB2D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A95FD295-6A91-3FDC-5C7C-553ECA4541B7" name="`cuentas`_FK1">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1432753B-0152-1121-6DEB-A0F37010512D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D76BFCDE-10C3-0E56-0557-127325E3AEFA" name="`cuentas`_FK2">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="02CEBFA9-1EFF-9446-7E10-8712AAAB6F05"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

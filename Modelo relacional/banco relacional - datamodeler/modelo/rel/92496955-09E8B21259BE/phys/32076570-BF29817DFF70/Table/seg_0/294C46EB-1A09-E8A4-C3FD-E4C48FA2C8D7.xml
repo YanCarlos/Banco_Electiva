@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="`departamentos`" directorySegmentName="seg_0" id="294C46EB-1A09-E8A4-C3FD-E4C48FA2C8D7">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="`id`" id="48CDD885-15B5-3E26-DC2E-4D973F25D374">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<defaultValue>NULL</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="`nombre`" id="AD61C227-9DFC-36E9-B0D9-D4E9AEB30BD6">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<defaultValue>&apos;NULL&apos;</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="`pais`" id="F0EE8487-299C-52DF-2AA7-0613990A66F3">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<defaultValue>NULL</defaultValue>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="`departamentos`_FK0" id="BEC15A86-4CC6-8C59-9083-360D37DA8B4E">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="`departamentos`_PK" id="2D38CC27-4531-4159-9F4F-48A86080D80A">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

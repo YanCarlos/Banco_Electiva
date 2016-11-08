@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B17226D4-9FDA-E2A0-2B04-00A752814607" name="`prestamos`">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>F3FFA425-22CF-D8D7-5352-17CCAA4E455B</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="`id`" id="23894A04-85F3-E29C-71A2-B242FC261245">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>3FB45127-7AF1-A4B0-6F88-78B712E33D55</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`fecha`" id="3F1439DB-4BFC-FA68-71A9-D8D1CD5C8E50">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>B9F586AA-D243-940A-21C5-F05BD0CB0F95</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>3E2586D8-A10B-500C-B4D3-1DF301C46AAF</domain>
+<defaultValue>&apos;NULL&apos;</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`monto`" id="327FEEED-54DC-67F0-C460-7B95F9CBCA30">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>D1A137B9-670F-6D4E-7161-E3B139174794</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<defaultValue>NULL</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`estado`" id="47367906-25F5-4C53-5640-38AFC274D7B0">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>673A5E02-64CB-D02D-ED85-6D88EE34F57A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`cliente`" id="48556439-EFDC-A14A-2049-FDD34F648A35">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>94BBF789-93C3-B0A6-E578-7865096CCCB1</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>E3498AF6-95A1-08AB-E335-4F0F2F9D28CD</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8389C139-FEF3-35C8-C3E6-150F12414601" referredColumn="E3498AF6-95A1-08AB-E335-4F0F2F9D28CD"/>
+</associations>
+</Column>
+<Column name="`asesor`" id="45A7FD24-6BA0-FBF3-B291-7A2415A75EE6">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>0F26F981-2EA0-9325-50C2-3B6782A6A8B7</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>E3498AF6-95A1-08AB-E335-4F0F2F9D28CD</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="083288ED-5D11-C620-7B7D-9B315CD4B6B6" referredColumn="E3498AF6-95A1-08AB-E335-4F0F2F9D28CD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4BC5FEED-6E56-CDFB-4605-1F44970477A5" name="`prestamos`_PK">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>36C918D1-0957-F5B7-9996-C94290EF07E0</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="23894A04-85F3-E29C-71A2-B242FC261245"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="537EDA71-30B0-2345-E96B-8155F2ECE18B" name="`prestamos`_FK0">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="48556439-EFDC-A14A-2049-FDD34F648A35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="627F0AA2-9F79-EC3A-7142-EEF28F5E681E" name="`prestamos`_FK1">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="45A7FD24-6BA0-FBF3-B291-7A2415A75EE6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

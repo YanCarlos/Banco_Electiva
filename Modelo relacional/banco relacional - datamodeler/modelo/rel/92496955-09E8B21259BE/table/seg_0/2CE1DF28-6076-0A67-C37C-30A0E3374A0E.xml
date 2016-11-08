@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2CE1DF28-6076-0A67-C37C-30A0E3374A0E" name="`movimientos`">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>D885D0E1-F656-C0DB-1922-5CE0B6BD5C12</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="`id`" id="98C309B6-D044-0260-F27E-C5AF9E34E6AD">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>4F1E4369-AA93-7AC1-7921-AC07DF6663A4</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`lugar`" id="34FD111E-012D-4026-7590-0F8849881132">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>EBD02E62-70FE-F9D5-4A3E-C0A0FA8325BC</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D8DAA589-723F-80AD-8E6A-B4CA1FB77AB7</domain>
+<defaultValue>&apos;NULL&apos;</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`tipo_movimiento`" id="5F82453B-CEC5-5536-4D04-A67F6E5076E6">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>2CDBDBF6-B772-47BF-BAEB-35F7AB77711E</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>BC34BC06-5BB8-B6C8-7664-5A9D2EFE488C</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1BBDAD4F-26DF-402F-5032-77FE309BD329" referredColumn="BC34BC06-5BB8-B6C8-7664-5A9D2EFE488C"/>
+</associations>
+</Column>
+<Column name="`monto`" id="F6C598EE-2F4E-A806-E903-78E1214A872E">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>F9B70685-E64F-27E4-679E-F93A31F13D6A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<defaultValue>NULL</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`cuenta`" id="DA656779-800E-2FC1-0755-DEFD2FAF387A">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>70E7DDC1-6D56-1752-4E96-AF6F27F215E4</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>BB4CF6F0-699C-1CFC-3063-279266F440F1</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="93A9C036-466D-D63C-829A-482A191F151F" referredColumn="BB4CF6F0-699C-1CFC-3063-279266F440F1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7E1BDB13-85D0-2355-CD73-FFAE99795D39" name="`movimientos`_PK">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>53C415A2-BC54-B06D-AF19-C232A4C024F1</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="98C309B6-D044-0260-F27E-C5AF9E34E6AD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1446EFCD-E28F-6748-B236-7505706E7D68" name="`movimientos`_FK0">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F82453B-CEC5-5536-4D04-A67F6E5076E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="71DC5B22-FAF1-37E5-1312-2B9C0FD2B650" name="`movimientos`_FK1">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA656779-800E-2FC1-0755-DEFD2FAF387A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

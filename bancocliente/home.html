@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>StartBank</title>
+        <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" href="Resources/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- jvectormap -->
+        <link rel="stylesheet" href="Resources/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="Resources/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="Resources/dist/css/skins/_all-skins.min.css">
+        <!-- jQuery 2.2.3 -->
+        <script src="Resources/plugins/jQuery/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="Resources/bootstrap/js/bootstrap.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="Resources/dist/js/app.min.js"></script>
+        <!-- jvectormap -->
+        <script src="Resources/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="Resources/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="Resources/dist/js/pages/dashboard2.js"></script>
+        <script src="Resources/JS/angular.min.js" type="text/javascript"></script>
+        <script src="Resources/JS/route.js" type="text/javascript"></script>
+        <script src="Resources/JS/General/appBank.js" type="text/javascript"></script>
+        <script src="Resources/JS/Banco/ctlBanco.js" type="text/javascript"></script>
+        <script src="Resources/JS/Banco/serBanco.js" type="text/javascript"></script>
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini" ng-app="appBank" >
+        <div class="wrapper">
+            <div ng-include="'pages/Templates/header.html'"></div>
+            <div ng-include="'pages/Templates/Menus/menuAdmin.html'"></div>
+            <div class="content-wrapper">
+                <div ng-view></div>
+                <!-- /.content -->
+            </div>
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    Version 1.0
+                </div>
+                <span>Desarrollado por <b>Nosotros</b></span>
+            </footer>
+
+        </div>
+        <!-- ./wrapper -->
+    </body>
+</html>

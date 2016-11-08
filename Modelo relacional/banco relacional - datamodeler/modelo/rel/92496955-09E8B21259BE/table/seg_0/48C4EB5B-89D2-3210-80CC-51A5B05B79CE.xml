@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="48C4EB5B-89D2-3210-80CC-51A5B05B79CE" name="`empleados`">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>D7D491DF-8ACC-DD9D-93A3-C2D97CC48777</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="`persona`" id="300F45CB-2AA4-9C6A-E28C-F3FAB6E3704A">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>77A48791-569B-D705-D5D1-68210EAE1FA4</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>E3498AF6-95A1-08AB-E335-4F0F2F9D28CD</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="448637E9-C1F4-BAB7-4F63-0E21340650A6" referredColumn="E3498AF6-95A1-08AB-E335-4F0F2F9D28CD"/>
+</associations>
+</Column>
+<Column name="`sucursal`" id="355DEBF4-D36E-4387-4A44-8AB67A105210">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>68545F04-49FD-4A6F-0553-ADEB3E464EA2</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>B8E51A6C-0699-1DF2-07BC-6B4E90CDB54D</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C17466A5-1392-8F2A-CC78-95C7D7575105" referredColumn="B8E51A6C-0699-1DF2-07BC-6B4E90CDB54D"/>
+</associations>
+</Column>
+<Column name="`cargo`" id="BC99FB15-2805-B884-0B12-06C88334E288">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>0B242823-823D-B122-9E02-BA01155EE339</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>55465CB7-3845-8B74-ACE1-9855700919B8</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="95E24EB3-4D2E-D965-5096-19F96D827543" referredColumn="55465CB7-3845-8B74-ACE1-9855700919B8"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0DBB0023-78DB-8284-5402-0A77360228F3" name="`empleados`_FK0">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="300F45CB-2AA4-9C6A-E28C-F3FAB6E3704A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CE3DC97F-7F95-3725-37FC-AA900CF3EDB3" name="`empleados`_FK1">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="355DEBF4-D36E-4387-4A44-8AB67A105210"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F0F54CE0-F399-E993-E491-A5021CCF19EF" name="`empleados`_FK2">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BC99FB15-2805-B884-0B12-06C88334E288"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

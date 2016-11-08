@@ -1,0 +1,66 @@
+<section class="content-header">
+    <h1>
+        Sistema bancario StartBank
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa  fa-university"></i> Banco</a></li>
+        <li class="active">Listado</li>
+    </ol>
+</section>
+
+<section class="content" ng-controller="bancoController" ng-init="listarBancos();">
+    <h3 style="text-align: center;"><b>Listado de Bancos</b></h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a ng-click="">#</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                        <th class="seleccionable">
+                            <a ng-click="">Nombre</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                        <th class="seleccionable">
+                            <a ng-click="">Nit</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                        <th class="seleccionable">
+                            <a ng-click="">Visión</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                        <th class="seleccionable">
+                            <a ng-click="">Misión</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                        <th class="seleccionable">
+                            <a ng-click="">Acciones</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="seleccionable" ng-repeat="obj in bancos">
+                        <th>{{$index+1}}</th>
+                        <td style="display:none;">{{obj.id}}</td>
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.nit}}</td>
+                        <td>{{obj.vision}}</td>
+                        <td>{{obj.mision}}</td>
+                        <td>
+                            <div id="acciones-row">
+                                <ul class="acciones-button" style="list-style: none;">
+                                    <li><a role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

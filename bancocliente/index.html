@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>StartBank</title>
+    
+    <link rel="stylesheet" href="Resources/css/reset.css">
+    <link rel="stylesheet" href="Resources/css/fuentes.min.css">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="Resources/css/style.css">
+  </head>
+  <body ng-app="app">
+
+    
+    <!-- Form Mixin-->
+    <!-- Input Mixin-->
+    <!-- Button Mixin-->
+    <!-- Pen Title-->
+    <div class="pen-title">
+    </div>
+    <!-- Form Module-->
+    <div class="module form-module" ng-controller="loginController">
+      <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+        <div class="tooltip">Registrarse</div>
+      </div>
+      <div class="form">
+        <h2>Login</h2>
+        <form ng-submit="login();">
+          <input name="cedula" type="text" placeholder="Cedula..." required="required" ng-model="cedula"/>
+          <input name="password" type="password" placeholder="Password..." required="required" ng-model="password"/>
+          <button>Entrar</button>
+        </form>
+      </div>
+      <div class="form">
+        <h2>Create an account</h2>
+        <form>
+          <input type="text" placeholder="Cedula..." required="required"/>
+          <input type="text" placeholder="Nombre..." required="required"/>
+          <input type="apellidos" placeholder="Apellidos..." required="required"/>
+          <input type="date" placeholder="Fecha de nacimiento..." required="required" min="1998-01-02"/>
+          <input type="ciudad" placeholder="Ciudad..." required="required"/>
+          <input type="tel" placeholder="Telefono..." required="required"/>
+          <input type="text" placeholder="Email..." required="required"/>
+          <input type="text" placeholder="Direccion..." required="required"/>
+          <button>Registrar</button>
+        </form>
+      </div>
+      <!--<div class="cta"><a href="#">¿Olvidaste tu contraseña?</a></div>-->
+    </div>
+    <!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
+
+    <script src="Resources/plugins/jQuery/jquery.min.js"></script>
+    <script src="Resources/js/index.js"></script>
+    <script src="Resources/js/angular.min.js"></script>
+    <script src="Resources/js/General/app.js"></script>
+    <script src="Resources/js/Login/ctlLogin.js"></script>
+    <script src="Resources/js/Login/serLogin.js"></script>
+
+  </body>
+</html>

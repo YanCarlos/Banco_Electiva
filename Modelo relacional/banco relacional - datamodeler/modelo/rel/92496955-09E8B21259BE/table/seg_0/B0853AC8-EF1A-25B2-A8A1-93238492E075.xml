@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B0853AC8-EF1A-25B2-A8A1-93238492E075" name="`tipos_cuenta_montos`">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>585B698D-2367-5EFC-67BC-53CCAE221F4C</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="`id`" id="022EDA90-E418-FD15-57FB-FDB578489D53">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>95E37B34-4958-0BDB-1E3C-2F2672B0808B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="`costo`" id="1E7BFA68-362E-4485-2EA6-71E90CD4414E">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>29E3828D-1E0A-BFB8-B78C-15DE57DF9000</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>C17160C4-B65D-124A-1C61-435399AC468A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A0B8F31F-02B0-B7DE-4B53-2025F9BB1794" referredColumn="C17160C4-B65D-124A-1C61-435399AC468A"/>
+</associations>
+</Column>
+<Column name="`tipo_cuenta`" id="A0DA4BA2-8E5F-429B-520D-460DB7593AB0">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>A77BC7F2-42FB-52A6-AE30-D77DCDCDCCCF</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E9305124-046B-AE4E-C30D-6E7008A892F2</domain>
+<defaultValue>NULL</defaultValue>
+<delegate>14676ECE-AFC4-062D-E789-62F1CC6B9B0C</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FDAA0AFC-145B-5343-9C88-44B8871F3B3C" referredColumn="14676ECE-AFC4-062D-E789-62F1CC6B9B0C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75E0C830-7363-7743-D041-8637634563C9" name="`tipos_cuenta_montos`_PK">
+<sourceDDLFile>banco.sql</sourceDDLFile>
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<importedID>D53DCD31-7757-CAE9-7E97-E66870CB0B2B</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="022EDA90-E418-FD15-57FB-FDB578489D53"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C32FAC07-F9A8-3A96-F11A-0DEFC15A9F83" name="`tipos_cuenta_montos`_FK0">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E7BFA68-362E-4485-2EA6-71E90CD4414E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3C93C44A-A747-3939-4506-EE8B1836B3E1" name="`tipos_cuenta_montos`_FK1">
+<createdBy>cpe</createdBy>
+<createdTime>2016-10-08 02:03:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>modelo</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A0DA4BA2-8E5F-429B-520D-460DB7593AB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

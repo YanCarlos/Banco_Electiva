@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="main_view" objectID="E04CA8A1-D41C-D8BA-AF81-F91E887C6B97" name="Relational_1" visible="true"/>
+   <object objectType="sub_view" objectID="AC919616-E12D-B9FD-FAEB-D45C885F0A60" name="ciudades" visible="true"/>
+   <object objectType="sub_view" objectID="48F6D451-E02F-6331-5FCD-208B6DD9EF24" name="cuentas" visible="true"/>
+   <object objectType="sub_view" objectID="668E3F69-8F49-9649-8E45-923938916269" name="movimientos" visible="true"/>
+   <object objectType="sub_view" objectID="2EB32EE5-0C3D-07F9-7FFA-29F1E5CA6413" name="personas" visible="true"/>
+   <object objectType="sub_view" objectID="1AA7F05F-0AA1-63B8-8687-F90A7A8EED56" name="prestamos" visible="true"/>
+   <object objectType="sub_view" objectID="F676B12A-E7F9-DC14-E626-F14323BBDF8F" name="sucursales" visible="true"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>
