@@ -12,7 +12,7 @@ $app->get("/personas",function() use($app){
 		$connection= getConnection();
 		$dbf=$connection->prepare("select * from personas");
 		$dbf->execute();
-		$resultado= $dbf->fetchAll();
+		$resultado= $dbf->fetchAll(PDO::FETCH_ASSOC);
 		$connection=null;
 		
 		$app->response->headers->set("Content-type","application/json");
