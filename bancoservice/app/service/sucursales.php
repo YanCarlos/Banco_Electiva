@@ -15,7 +15,7 @@
                                      join departamentos d on d.id=c.departamento
                                      join personas p on p.cedula=s.gerente ORDER BY s.nombre");
         $sth->execute();
-        $resultado = $sth->fetchAll();
+        $resultado = $sth->fetchAll(PDO::FETCH_ASSOC);
         $connection=null;
         if (isset($resultado[0]["nombre"])) {
             $resultado = array('respuesta' => true, 'resultado' => $resultado  );
