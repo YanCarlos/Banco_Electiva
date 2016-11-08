@@ -10,8 +10,8 @@
     $app->get('/sucursales', function () use($app) {
     	$connection= getConnection();
         $sth = $connection->prepare("select s.id,s.nombre ,p.nombre as gerente,c.nombre as ciudad,
-                                     s.direccion,d.nombre as departamento
-                                     from sucursales s join ciudades c on c.id=s.ciudad
+                                     s.direccion,d.nombre as departamento,d.id as id_departamento, 
+                                     c.id as id_ciudad  from sucursales s join ciudades c on c.id=s.ciudad
                                      join departamentos d on d.id=c.departamento
                                      join personas p on p.cedula=s.gerente ORDER BY s.nombre");
         $sth->execute();
