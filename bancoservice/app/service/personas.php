@@ -8,21 +8,18 @@
 
 /*Metodo que consulta personas*/
 $app->get("/personas",function() use($app){
-	try{
-		$connection= getConnection();
-		$dbf=$connection->prepare("select * from personas");
-		$dbf->execute();
-		$resultado= $dbf->fetchAll(PDO::FETCH_ASSOC);
-		$connection=null;
-		
-		$app->response->headers->set("Content-type","application/json");
-		$app->response->status(200);
-		print_r($resultado);
-		//pp->response->body(json_encode($resultado));
-	}catch(PDOException $e){
-		echo "Error: " . $e->getMessage();
-
-	}
+	$connection= getConnection();
+        $sth = $connection->prepare("select * from personas");
+        $sth->execute();
+        $resultado = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $connection=null;
+        if ($resultado!=false) {
+            $resultado = array('respuesta' => true, 'resultado' => $resultado  );
+            $app->withJSON($resultado,200);
+        }else{
+            $resultado = array('respuesta' => false, 'mensaje' => 'No hay personas en la base de datos.');
+            $app->withJSON($resultado,400);
+        }	
 });
 
 /*Metodo que consulta persona a partir de una cedula*/
