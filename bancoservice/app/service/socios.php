@@ -11,7 +11,7 @@
     	$connection= getConnection();
         $sth = $connection->prepare("select * from socios");
         $sth->execute();
-        $resultado = $sth->fetchAll();
+        $resultado = $sth->fetchAll(PDO::FETCH_ASSOC);
         $connection=null;
         if (isset($resultado[0]["nombre"])) {
             $resultado = array('respuesta' => true, 'resultado' => $resultado  );

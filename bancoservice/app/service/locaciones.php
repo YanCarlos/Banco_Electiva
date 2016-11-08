@@ -8,7 +8,7 @@ $app->get("/ciudades/:departamento",function($departamento) use($app){
 	$connection= getConnection();
         $sth = $connection->prepare("select * from ciudades where departamento=" . $departamento );
         $sth->execute();
-        $resultado = $sth->fetchAll();
+        $resultado = $sth->fetchAll(PDO::FETCH_ASSOC);
         $connection=null;
         if ($resultado!=false) {
             $resultado = array('respuesta' => true, 'resultado' => $resultado  );
@@ -25,7 +25,7 @@ $app->get("/departamentos",function() use($app){
 	$connection= getConnection();
         $sth = $connection->prepare("select * from departamentos");
         $sth->execute();
-        $resultado = $sth->fetchAll();
+        $resultado = $sth->fetchAll(PDO::FETCH_ASSOC);
         $connection=null;
         if ($resultado!=false) {
             $resultado = array('respuesta' => true, 'resultado' => $resultado  );
