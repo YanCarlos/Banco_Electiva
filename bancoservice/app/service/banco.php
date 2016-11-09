@@ -59,27 +59,17 @@ $app->get("/banco",function() use($app){
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection();
-                $sql= "Select * from banco ";
-                $dbf->execute();
-                $resultado= $dbf->fetchAll();
-        
-                if ($resultado!=false) {
-                  $sql = "INSERT INTO banco VALUES (null,:nombre,:nit,:vision,:mision, null)";
-                  $sth = $connection->prepare($sql);
-                  $sth->bindParam("nombre", $input['nombre']);
-                  $sth->bindParam("nit", $input['nit']);
-                  $sth->bindParam("vision", $input['vision']);
-                  $sth->bindParam("mision", $input['mision']);
-                  $sth->execute();
-                  $connection=null;  
-                  $resultado = $connection->lastInsertId();
-                  $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
-                  $app->withJSON($resultado,200);
-                }else{
-                   $connection=null;  
-                   $resultado = array('respuesta' => false, 'mensaje' => 'Ya hay un banco creado.');
-                   $app->withJSON($resultado,400);
-                }
+                $sql = "INSERT INTO banco VALUES (null,:nombre,:nit,:vision,:mision, null)";
+                $sth = $connection->prepare($sql);
+                $sth->bindParam("nombre", $input['nombre']);
+                $sth->bindParam("nit", $input['nit']);
+                $sth->bindParam("vision", $input['vision']);
+                $sth->bindParam("mision", $input['mision']);
+                $sth->execute();
+                 $connection=null;  
+                $resultado = $connection->lastInsertId();
+                $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
+                $app->withJSON($resultado,200);
                
             }
         }catch(PDOException $e){
