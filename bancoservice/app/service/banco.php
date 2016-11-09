@@ -99,12 +99,12 @@ $app->put('/banco', function () use($app) {
         try{
             $input= $app->request->params();
             if (!isset($input['id']) || !isset($input['nombre']) || !isset($input['nit']) || !isset($input['mision'])
-                || !isset($input['vision']) ) {
+                || !isset($input['vision']) || !isset($input['sede']) || !isset($input['usuario']) || !isset($input['password'])) {
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para modificar los datos del banco.');
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection();               	
-                $sql = "UPDATE banco SET nombre=:nombre,nit=:nit,vision=:vision,mision=:mision WHERE id=:id";
+                $sql = "UPDATE banco SET nombre=:nombre,nit=:nit,vision=:vision,mision=:mision,sede=:sede WHERE id=:id";
                 $sth = $connection->prepare($sql);
                 $sth->bindParam("id", $input['id']);
                 $sth->bindParam("nombre", $input['nombre']);
