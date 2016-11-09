@@ -11,6 +11,17 @@ app.controller('bancoController', function ($scope, $window, bancoService) {
             }
         });
 	}
+	$scope.editar=function(){
+		bancoService.editar($scope.id, $scope.nombre, $scope.nit, $scope.vision, $scope.mision).then(function (response) {
+            if (response.data.resultado) {
+            	alert('Editado exitosamente!');
+            	$scope.listarBancos();
+            }else{
+            	console.log(response);
+            	alert('Ocurrio un error: '+response.data.mensaje);
+            }
+        });
+	}
 
 	$scope.listarBancos=function(){
 		bancoService.listarBancos().then(
@@ -24,5 +35,12 @@ app.controller('bancoController', function ($scope, $window, bancoService) {
 		$scope.nit="";
 		$scope.vision="";
 		$scope.mision="";
+	}
+	$scope.datos=function(obj){
+		$scope.id=obj.id;
+		$scope.nombre=obj.nombre;
+		$scope.nit=obj.nit;
+		$scope.vision=obj.vision;
+		$scope.mision=obj.mision;
 	}
 });

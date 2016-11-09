@@ -6,6 +6,8 @@
 $app->post("/login",function() use($app){
 	try{
 		$input= $app->request->params();
+		$resultado = array('respuesta' => true, 'resultado' => $input);
+	    $app->withJSON($resultado,200);
 		if (isset($input['cedula']) || isset($input['password'])) {
 			$connection= getConnection();
 			$dbf=$connection->prepare("SELECT p.cedula, p.nombre, p.apellidos, p.email FROM webmaster w JOIN acceso a ON a.persona=w.admin JOIN personas p ON p.cedula=a.persona WHERE a.persona=".$input['cedula']." AND a.password='".$input['password']."';");

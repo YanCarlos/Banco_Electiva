@@ -111,12 +111,11 @@ $app->put('/banco', function () use($app) {
                 $sth->bindParam("nit", $input['nit']);
                 $sth->bindParam("vision", $input['vision']);
                 $sth->bindParam("mision", $input['mision']);
-                $sth->bindParam("sede", $input['sede']);
                 $sth->execute();
-                $connection=null;  
                 $resultado = $connection->lastInsertId();
                 $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
-                $app->withJSON($resultado,200);                
+                $app->withJSON($resultado,200);  
+                $connection=null;                
             }
         }catch(PDOException $e){
              $resultado=array('resultado' => false, 'mensaje' =>$e->getMessage());

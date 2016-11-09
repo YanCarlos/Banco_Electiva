@@ -3,13 +3,13 @@
         Sistema bancario StartBank
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa  fa-university"></i> Banco</a></li>
+        <li><a href="#"><i class="fa  fa-home"></i> Sucursales</a></li>
         <li class="active">Listado</li>
     </ol>
 </section>
 
-<section class="content" ng-controller="bancoController" ng-init="listarBancos();">
-    <h3 style="text-align: center;"><b>Listado de Bancos</b></h3>
+<section class="content" ng-controller="bancoController" ng-init="listarSucursales();">
+    <h3 style="text-align: center;"><b>Listado de Sucursales</b></h3>
     <hr>
     <div class="row">
         <div class="col-md-12">
@@ -25,15 +25,15 @@
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Nit</a>
+                            <a ng-click="">Gerente</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Visión</a>
+                            <a ng-click="">Ciudad</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Misión</a>
+                            <a ng-click="">Dirección</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
@@ -43,13 +43,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="seleccionable" ng-repeat="obj in bancos">
+                    <tr class="seleccionable" ng-repeat="obj in sucursales">
                         <th>{{$index+1}}</th>
                         <td style="display:none;">{{obj.id}}</td>
                         <td>{{obj.nombre}}</td>
-                        <td>{{obj.nit}}</td>
-                        <td>{{obj.vision}}</td>
-                        <td>{{obj.mision}}</td>
+                        <td>{{obj.gerente}}</td>
+                        <td>{{obj.ciudad}} ({{obj.departamento}})</td>
+                        <td>{{obj.direccion}}</td>
                         <td>
                             <div id="acciones-row">
                                 <ul class="acciones-button" style="list-style: none;">
@@ -86,38 +86,49 @@
             
         </div>
         <div class="col-md-10" style="display: flex; justify-content: center; flex-direction: column;">
-          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left">
+          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="editar();">
             <input type="hidden" ng-model="id" id="id"/>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre sucursal<span class="required">*</span></label>
               <div class="col-md-8 col-sm-6 col-xs-12">
                 <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="nombre">
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nit <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Gerente<span class="required">*</span></label>
               <div class="col-md-8 col-sm-6 col-xs-12">
-                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="nit">
+                <select ng-model="gerente" class="form-control col-md-7 col-xs-12">
+                  <option ng-repeat=" obj in empleados" value="{{obj.cedula}}" >{{obj.nombre}} {{obj.apellidos}} ({{obj.cedula}})</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
-              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Visión <span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Departamento<span class="required">*</span></label>
               <div class="col-md-8 col-sm-6 col-xs-12">
-                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="vision">
+                <select ng-model="depto" class="form-control col-md-7 col-xs-12"  ng-change="listarMunicipios();">
+                  <option ng-repeat=" obj in deptos" value="{{obj.id}}" >{{obj.nombre}}</option>
+                </select>
               </div>
             </div>
-
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Misión<span class="required">*</span></label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Municipio<span class="required">*</span></label>
               <div class="col-md-8 col-sm-6 col-xs-12">
-                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="mision">
+                <select ng-model="ciudad" class="form-control col-md-7 col-xs-12">
+                  <option ng-repeat=" obj in municipios" value="{{obj.id}}" >{{obj.nombre}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Direccion<span class="required">*</span></label>
+              <div class="col-md-8 col-sm-6 col-xs-12">
+                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="direccion">
               </div>
             </div>
             <div class="ln_solid"></div>
             <div class="form-group">
-              <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                 <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel"/>
-                <button type="submit" class="btn btn-success" ng-click="editar();">Actualizar</button>
+                <input type="submit" class="btn btn-success" value="Actualizar">
               </div>
             </div>
           </form>

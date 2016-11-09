@@ -9,7 +9,7 @@
 	/*Metodo que retorna todas las sucursales ordenadas por el nombre*/
     $app->get('/sucursales', function () use($app) {
     	$connection= getConnection();
-        $sth = $connection->prepare("select s.id,s.nombre ,p.nombre as gerente,c.nombre as ciudad,
+        $sth = $connection->prepare("select s.id,s.nombre ,p.cedula as id_gerente, p.nombre as gerente,c.nombre as ciudad,
                                      s.direccion,d.nombre as departamento,d.id as id_departamento, 
                                      c.id as id_ciudad  from sucursales s join ciudades c on c.id=s.ciudad
                                      join departamentos d on d.id=c.departamento
