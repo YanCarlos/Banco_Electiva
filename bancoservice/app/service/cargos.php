@@ -9,7 +9,7 @@ $app->get("/cargos",function() use($app){
 		$connection= getConnection();
 		$dbf=$connection->prepare("select * from cargos" );
 		$dbf->execute();
-		$resultado= $dbf->fetchAll();
+		$resultado= $dbf->fetchAll(PDO::FETCH_ASSOC);
 		$connection=null;
 		if (isset($resultado[0]["descripcion"])) {
             $resultado = array('respuesta' => true, 'resultado' => $resultado  );
@@ -87,27 +87,16 @@ $app->get("/cargos",function() use($app){
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para registrar el cargo.');
                 $app->withJSON($resultado,400);
             }else{
-                $connection= getConnection();
-               	$sth = $connection->prepare("select * FROM webmaster w join acceso a on a.persona=w.admin WHERE w.admin=" . $input["usuario"] ." and a.password='" .$input["password"] . "'");
-               	$sth->execute();
-               	$admin= (array)$sth->fetchObject();
-               	if (isset($admin["admin"]) && $admin["admin"] == $input["usuario"]) {
-         
-	                    $sql = "INSERT INTO cargos VALUES (null,:descripcion,:salario,:horas)";
-	                    $sth = $connection->prepare($sql);
-	                    $sth->bindParam("descripcion", $input['descripcion']);
-	                    $sth->bindParam("salario", $input['salario']);
-	                    $sth->bindParam("horas", $input['horas']);
-	                    $sth->execute();
-	                    $resultado = $connection->lastInsertId();
-	                    $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
-	                    $app->withJSON($resultado,200);
-	    
-               	}else{
-               		$resultado=array('resultado' => false, 'mensaje' =>'Debe autenticarse como webmaster para poder registrar un cargo.' );
-	                $app->withJSON($resultado,400);
-               	}
-                
+                $connection= getConnection();           	
+                $sql = "INSERT INTO cargos VALUES (null,:descripcion,:salario,:horas)";
+                $sth = $connection->prepare($sql);
+                $sth->bindParam("descripcion", $input['descripcion']);
+                $sth->bindParam("salario", $input['salario']);
+                $sth->bindParam("horas", $input['horas']);
+                $sth->execute();
+                $resultado = $connection->lastInsertId();
+                $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
+                $app->withJSON($resultado,200);                
                 $connection=null;
             }
         }catch(PDOException $e){
@@ -130,33 +119,24 @@ $app->put('/cargos', function () use($app) {
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para modificar los datos del cargo.');
                 $app->withJSON($resultado,400);
             }else{
-                $connection= getConnection();
-               	$sth = $connection->prepare("select * FROM webmaster w join acceso a on a.persona=w.admin WHERE w.admin=" . $input["usuario"] ." and a.password='" .$input["password"] . "'");
-               	$sth->execute();
-               	$admin= (array)$sth->fetchObject();
-               	if (isset($admin["admin"]) && $admin["admin"] == $input["usuario"]) {
-               		$sth = $connection->prepare("select * FROM cargos WHERE id=" . $input["id"]);
-	                $sth->execute();
-	                $resultado=(array) $sth->fetchObject(); 
-	                if (isset($resultado["descripcion"])) {
-	                    $sql = "UPDATE cargos SET descripcion=:descripcion,salario=:salario,horas_semanales=:horas WHERE id=:id";
-	                    $sth = $connection->prepare($sql);
-	                    $sth->bindParam("id", $input['id']);
-	                    $sth->bindParam("descripcion", $input['descripcion']);
-	                    $sth->bindParam("salario", $input['salario']);
-	                    $sth->bindParam("horas", $input['horas']);
-	                    $sth->execute();
-	                    $resultado=array('resultado' =>true, 'mensaje' =>'Los datos del cargo '. $input["id"].' fueron modificados correctamente.' );
-	                    $app->withJSON($resultado,200);
-	                }else{
-	                    $resultado=array('resultado' => false, 'mensaje' =>'No existe el cargo '. $input["id"] . '.' );
-	                    $app->withJSON($resultado,400);
-	                }   
-               	}else{
-               		$resultado=array('resultado' => false, 'mensaje' =>'Debe autenticarse como webmaster para poder actualizar los datos del cargo.' );
-	                $app->withJSON($resultado,400);
-               	}
-                
+                $connection= getConnection();               	
+             		$sth = $connection->prepare("select * FROM cargos WHERE id=" . $input["id"]);
+                $sth->execute();
+                $resultado=(array) $sth->fetchObject(); 
+                if (isset($resultado["descripcion"])) {
+                    $sql = "UPDATE cargos SET descripcion=:descripcion,salario=:salario,horas_semanales=:horas WHERE id=:id";
+                    $sth = $connection->prepare($sql);
+                    $sth->bindParam("id", $input['id']);
+                    $sth->bindParam("descripcion", $input['descripcion']);
+                    $sth->bindParam("salario", $input['salario']);
+                    $sth->bindParam("horas", $input['horas']);
+                    $sth->execute();
+                    $resultado=array('resultado' =>true, 'mensaje' =>'Los datos del cargo '. $input["id"].' fueron modificados correctamente.' );
+                    $app->withJSON($resultado,200);
+                }else{
+                    $resultado=array('resultado' => false, 'mensaje' =>'No existe el cargo '. $input["id"] . '.' );
+                    $app->withJSON($resultado,400);
+                }            	
                 $connection=null;
             }
         }catch(PDOException $e){
