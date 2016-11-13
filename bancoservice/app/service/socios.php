@@ -64,7 +64,7 @@
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection(); 
-                $sql= "SELECT * personas WHERE cedula=". $input['cedula'];
+                $sql= "SELECT * FROM personas WHERE cedula=". $input['cedula'];
                 $sth = $connection->prepare($sql);
                 $sth->execute();
                 $resultado = $sth->fetchObject();
