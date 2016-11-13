@@ -34,7 +34,7 @@
 /*Metodo que retorna la cantidad de porcentaje que queda*/
     $app->get('/porcentaje', function () use($app) {
         $connection= getConnection();
-        $sth = $connection->prepare("SELECT (100-sum(porcentaje)) as resto from socios");
+        $sth = $connection->prepare("SELECT IFNULL((100-sum(porcentaje)),100) as resto from socios");
         $sth->execute();
         $resultado = $sth->fetchObject();
         $connection=null;
@@ -96,11 +96,11 @@
                         $resultado = array('respuesta' => true, 'resultado' => $resultado  );
                         $app->withJSON($resultado,200);                   
                     }else{
-                         $resultado = array('respuesta' => false, 'resultado' => "Error al intentar registrar la persona."  );
+                         $resultado = array('respuesta' => false, 'mensaje' => "Error al intentar registrar la persona."  );
                         $app->withJSON($resultado,400);  
                     }
                 }else{
-                     $resultado = array('respuesta' => false, 'resultado' => "Esa persona ya esta registrada en la base de datos."  );
+                     $resultado = array('respuesta' => false, 'mensaje' => "Esa persona ya esta registrada en la base de datos."  );
                         $app->withJSON($resultado,400);  
                 }
                 

@@ -1,10 +1,38 @@
 "use strict";
 app.controller('sociosController', function ($scope, $window, $timeout, sociosService) {
 	$scope.msj="";
+    $scope.ciudad="0";
+    $scope.listarDeptos=function(){
+        sociosService.listarDeptos().then(
+            function (response) {
+                $scope.deptos=response.data.resultado;
+                $scope.depto='0';
+            }
+        );
+    }
+
+    $scope.listarMunicipios=function(){
+        sociosService.listarMunicipios($scope.depto).then(
+            function (response) {
+                $scope.municipios=response.data.resultado;
+                $scope.ciudad="0";
+            }
+        );
+    }
+
+    $scope.calPorcentaje=function(){
+        sociosService.calPorcentaje().then(function(response){
+            console.log(response);
+            if (response.data.respuesta) {
+                $scope.porDisponible=response.data.resultado.resto;
+            };
+            
+        });
+    }
+
 	$scope.registrar=function(){
         sociosService.registrar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
          $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
-			console.log(response);
             if (response.data.respuesta) {
             	console.log(response);
             	$scope.colorText='success';
@@ -45,9 +73,16 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
 	}
 	$scope.limpiar= function(){
 		$scope.nombre="";
-		$scope.nit="";
-		$scope.vision="";
-		$scope.mision="";
+		$scope.apellidos="";
+        $scope.cedula="";
+        $scope.fecha="";
+        $scope.telefono="";
+        $scope.correo="";
+        $scope.depto="0";
+        $scope.ciudad="0";
+        $scope.direccion="";
+        $scope.porcentaje="";
+        $scope.calPorcentaje();
 	}
 	$scope.datos=function(obj){
 		$scope.id=obj.id;

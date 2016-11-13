@@ -27,6 +27,52 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
         return promise;
     };
 
+    this.listarDeptos=function(){
+        var promise = $http({
+            method: "get",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/departamentos",
+            data: $httpParamSerializerJQLike({}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function mySucces(response) {
+            return response;
+        }, function myError(response) {
+            return response;
+        });
+
+        /*Luego se retorna la promesa*/
+        return promise;
+    }
+
+    this.listarMunicipios=function(departamento){
+        var promise = $http({
+            method: "get",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/ciudades/"+departamento,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function mySucces(response) {
+            return response;
+        }, function myError(response) {
+            return response;
+        });
+
+        /*Luego se retorna la promesa*/
+        return promise;
+    }    
+
+    this.calPorcentaje=function(){
+        var promise = $http({
+            method: "get",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/porcentaje",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function mySucces(response) {
+            return response;
+        }, function myError(response) {
+            return response;
+        });
+
+        /*Luego se retorna la promesa*/
+        return promise;
+    }
+
     this.editar = function (id, nombre, nit, vision, mision) {
         var promise = $http({
             method: "put",
