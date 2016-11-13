@@ -64,35 +64,44 @@
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection(); 
-                $fecha_actual= date("Y-m-d");
-
-                $sql="INSERT INTO personas VALUES(:cedula,:nombre,:apellidos,:nacimiento,:ingreso,:ciudad,:telefono,:email,:direccion)";
+                $sql= "SELECT * personas WHERE cedula=". $input['cedula'];
                 $sth = $connection->prepare($sql);
-                $sth->bindParam("cedula", $input['cedula']);
-                $sth->bindParam("nombre", $input['nombre']);
-                $sth->bindParam("apellidos", $input['apellidos']);
-                $sth->bindParam("nacimiento", $input['fecha_nacimiento']);
-                $sth->bindParam("ingreso", $fecha_actual);
-                $sth->bindParam("ciudad", $input['ciudad']);
-                $sth->bindParam("telefono", $input['telefono']);
-                $sth->bindParam("email", $input['email']);
-                $sth->bindParam("direccion", $input['direccion']);
                 $sth->execute();
-                $resultado = $connection->lastInsertId();
-                if(is_numeric($resultado)){
-                    $sql = "INSERT INTO socios VALUES (:cedula,:porcentaje)";
+                $resultado = $sth->fetchObject();
+                if($resultado==false){
+                    $fecha_actual= date("Y-m-d");
+                    $sql="INSERT INTO personas VALUES(:cedula,:nombre,:apellidos,:nacimiento,:ingreso,:ciudad,:telefono,:email,:direccion)";
                     $sth = $connection->prepare($sql);
                     $sth->bindParam("cedula", $input['cedula']);
-                    $sth->bindParam("porcentaje", $input['porcentaje']);
+                    $sth->bindParam("nombre", $input['nombre']);
+                    $sth->bindParam("apellidos", $input['apellidos']);
+                    $sth->bindParam("nacimiento", $input['fecha_nacimiento']);
+                    $sth->bindParam("ingreso", $fecha_actual);
+                    $sth->bindParam("ciudad", $input['ciudad']);
+                    $sth->bindParam("telefono", $input['telefono']);
+                    $sth->bindParam("email", $input['email']);
+                    $sth->bindParam("direccion", $input['direccion']);
                     $sth->execute();
                     $resultado = $connection->lastInsertId();
-                    $connection=null;
-                    $resultado = array('respuesta' => true, 'resultado' => $resultado  );
-                    $app->withJSON($resultado,200);                   
+                    if(is_numeric($resultado)){
+                        $sql = "INSERT INTO socios VALUES (null,:cedula,:porcentaje)";
+                        $sth = $connection->prepare($sql);
+                        $sth->bindParam("cedula", $input['cedula']);
+                        $sth->bindParam("porcentaje", $input['porcentaje']);
+                        $sth->execute();
+                        $resultado = $connection->lastInsertId();
+                        $connection=null;
+                        $resultado = array('respuesta' => true, 'resultado' => $resultado  );
+                        $app->withJSON($resultado,200);                   
+                    }else{
+                         $resultado = array('respuesta' => false, 'resultado' => "Error al intentar registrar la persona."  );
+                        $app->withJSON($resultado,400);  
+                    }
                 }else{
-                     $resultado = array('respuesta' => false, 'resultado' => "Error al intentar registrar la persona."  );
-                    $app->withJSON($resultado,400);  
+                     $resultado = array('respuesta' => false, 'resultado' => "Esa persona ya esta registrada en la base de datos."  );
+                        $app->withJSON($resultado,400);  
                 }
+                
                 
             }
         
@@ -115,7 +124,9 @@
     $app->put('/socio', function () use($app) {
         try{
             $input= $app->request->params();
-            if (!isset($input['cedula']) || !isset($input['porcentaje'])) {
+            if (!isset($input['cedula']) || !isset($input['nombre']) || !isset($input['apellidos'])
+                || !isset($input['fecha_nacimiento']) || !isset($input['ciudad']) || !isset($input['telefono'])
+                || !isset($input['email'])  || !isset($input['direccion']) || !isset($input['porcentaje'])) {
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para modificar el socio.');
                 $app->withJSON($resultado,400);
             }else{
@@ -124,11 +135,31 @@
                 $sth->execute();
                 $resultado=(array) $sth->fetchObject(); 
                 if ($resultado!=false) {
-                    $sql = "UPDATE socios SET porcentaje=:porcentaje WHERE id=:id";
+                    /*Modificamos en la tabla socios*/
+                    $sql = "UPDATE socios SET porcentaje=:porcentaje WHERE persona=:cedula";
                     $sth = $connection->prepare($sql);
                     $sth->bindParam("cedula", $input['cedula']);
                     $sth->bindParam("porcentaje", $input['porcentaje']);                 
                     $sth->execute();
+
+                    /*Modificado en la tabla personas*/
+                    $sql = "UPDATE personas SET nombre=:nombre,apellidos=:apellidos,fecha_nacimiento=:nacimiento,
+                            fecha_ingreso=:ingreso,ciudad=:ciudad,telefono=:telefono,email=:email,direccion=:direccion WHERE cedula=:cedula";
+                    $sth = $connection->prepare($sql);
+                    $sth->bindParam("cedula", $input['cedula']);
+                    $sth->bindParam("nombre", $input['nombre']);
+                    $sth->bindParam("apellidos", $input['apellido']);
+                    $sth->bindParam("nacimiento", $input['nacimiento']);
+                    $sth->bindParam("ingreso", $input['ingreso']);
+                    $sth->bindParam("ciudad", $input['ciudad']);
+                    $sth->bindParam("telefono", $input['telefono']); 
+                    $sth->bindParam("email", $input['email']);
+                    $sth->bindParam("direccion", $input['direccion']);                                       
+                    $sth->execute();
+
+
+
+                    /*Retornamos el resultado*/
                     $resultado=array('resultado' =>true, 'mensaje' =>'El socio ' . $resultado["cedula"] . ' fue modificado.' );
                     $app->withJSON($resultado,200);
                 }else{
