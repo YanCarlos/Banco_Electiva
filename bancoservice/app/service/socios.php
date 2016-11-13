@@ -66,13 +66,13 @@
                 $connection= getConnection(); 
                 $fecha_actual= date("Y-m-d");
 
-                $sql="INSERT INTO personas VALUES(:cedula,:nombre,:apellidos,:nacimiento,:ingreso,:ciudad,:telefono,:email,:direccion)"
-                sth = $connection->prepare($sql);
+                $sql="INSERT INTO personas VALUES(:cedula,:nombre,:apellidos,:nacimiento,:ingreso,:ciudad,:telefono,:email,:direccion)";
+                $sth = $connection->prepare($sql);
                 $sth->bindParam("cedula", $input['cedula']);
                 $sth->bindParam("nombre", $input['nombre']);
                 $sth->bindParam("apellidos", $input['apellidos']);
                 $sth->bindParam("nacimiento", $input['fecha_nacimiento']);
-                $sth->bindParam("ingreso", $input['fecha_ingreso']);
+                $sth->bindParam("ingreso", $fecha_actual);
                 $sth->bindParam("ciudad", $input['ciudad']);
                 $sth->bindParam("telefono", $input['telefono']);
                 $sth->bindParam("email", $input['email']);

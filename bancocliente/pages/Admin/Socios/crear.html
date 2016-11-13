@@ -9,7 +9,7 @@
     </ol>
 </section>
 
-<section class="content" ng-controller="bancoController">
+<section class="content" ng-controller="sociosController">
     <h3 style="text-align: center;"><b>Registro socio</b></h3>
     <hr>
     <div class="row">
@@ -19,13 +19,67 @@
         <div class="col-md-10">
           <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="registrar();">
             <div class="row">
-              <div class="col-md-4">
-                <div class="form-group" ng-class="{'has-error': formulario.txtNombre.$invalid, 'has-success': formulario.txtNombre.$valid}">
-                  <label for="txtNombre">Nombre(s)</label>
-                  <input class="form-control" type="text" required placeholder="Nombre(s) del funcionario" ng-model="txtNombre">
-                </div>
+              <div class="col-md-6">
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="nombre">Nombre(s)</label>
+                      <input class="form-control" type="text" required placeholder="Nombre(s) del socio" ng-model="nombre">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="cedula">Cedula</label>
+                      <input class="form-control" type="number" min="0" required placeholder="Cedula del socio" ng-model="cedula">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="telefono">Teléfono</label>
+                      <input class="form-control" type="number" required placeholder="Teléfono del socio" ng-model="telefono">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="direccion">Dirección del socio</label>
+                      <div class="row">
+                          <div class="col-md-4" style="padding-right:1.6px;">
+                              <select class="form-control" type="number"   min="0" required ng-model="ciudad">
+                                  <option value="1">La Tebaida</option>
+                                  <option>Armenia</option>
+                                  <option>Quimbaya</option>
+                                  <option>Calarca</option>
+                              </select>
+                          </div>
+                          <div class="col-md-8" style="padding-left:0;">
+                              <input class="form-control" type="text" required placeholder="Direccion del socio" ng-model="direccion">
+                          </div>
+                      </div>
+                  </div>
               </div>
+              <div class="col-md-6">
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="apellidos">Apellidos</label>
+                      <input class="form-control" type="text" required placeholder="Apellidos del socio" ng-model="apellidos">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="fecha">Fecha de nacimiento</label>
+                      <input class="form-control" type="date" required placeholder="Fecha de nacimiento del socio" ng-model="fecha">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="correo">Correo electrónico</label>
+                      <input class="form-control" type="email" required placeholder="Correo electrónico del socio" ng-model="correo">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="porcentaje">Porcentaje de participación</label>
+                      <input class="form-control" type="number" min="0" required placeholder="Porcentaje de participación del socio" ng-model="porcentaje">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
             </div>
+            <div class="col-md-2">
+              <input type="button" class="btn btn-primary btn-block btn-flat" ng-click="limpiar();" value="Cancel"/>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success btn-block btn-flat" type="submit">
+                Registrar
+              </button>
+            </div>
+          </div>
           </form>
         </div>
         <!-- /.col -->

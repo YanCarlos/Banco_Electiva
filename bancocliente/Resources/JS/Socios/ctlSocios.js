@@ -2,7 +2,8 @@
 app.controller('sociosController', function ($scope, $window, $timeout, sociosService) {
 	$scope.msj="";
 	$scope.registrar=function(){
-		bancoService.registrar($scope.nombre, $scope.nit, $scope.vision, $scope.mision).then(function (response) {
+        sociosService.registrar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
+         $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
 			console.log(response);
             if (response.data.respuesta) {
             	console.log(response);
@@ -20,7 +21,7 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         });
 	}
 	$scope.editar=function(){
-		bancoService.editar($scope.id, $scope.nombre, $scope.nit, $scope.vision, $scope.mision).then(function (response) {
+		sociosService.editar($scope.id, $scope.nombre, $scope.nit, $scope.vision, $scope.mision).then(function (response) {
             if (response.data.resultado) {
             	$scope.colorText='success';
             	$scope.msj='Editado exitosamente!';
@@ -36,7 +37,7 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
 	}
 
 	$scope.listarBancos=function(){
-		bancoService.listarBancos().then(
+		sociosService.listarBancos().then(
 			function (response) {
 				$scope.bancos=response.data.resultado;
         	}
