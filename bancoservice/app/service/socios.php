@@ -57,20 +57,43 @@
     $app->post('/socio', function () use($app) {
         try{
             $input= $app->request->params();
-            if (!isset($input['cedula']) || !isset($input['pocentaje'])) {
+            if (!isset($input['cedula']) || !isset($input['nombre']) || !isset($input['apellidos'])
+                || !isset($input['fecha_nacimiento']) || !isset($input['ciudad']) || !isset($input['telefono'])
+                || !isset($input['email'])  || !isset($input['direccion']) || !isset($input['porcentaje'])) {
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para registrar el socio.');
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection(); 
-                $sql = "INSERT INTO socios VALUES (:cedula,:porcentaje)";
-                $sth = $connection->prepare($sql);
+                $fecha_actual= date("Y-m-d");
+
+                $sql="INSERT INTO personas VALUES(:cedula,:nombre,:apellidos,:nacimiento,:ingreso,:ciudad,:telefono,:email,:direccion)"
+                sth = $connection->prepare($sql);
                 $sth->bindParam("cedula", $input['cedula']);
-                $sth->bindParam("porcentaje", $input['porcentaje']);
+                $sth->bindParam("nombre", $input['nombre']);
+                $sth->bindParam("apellidos", $input['apellidos']);
+                $sth->bindParam("nacimiento", $input['fecha_nacimiento']);
+                $sth->bindParam("ingreso", $input['fecha_ingreso']);
+                $sth->bindParam("ciudad", $input['ciudad']);
+                $sth->bindParam("telefono", $input['telefono']);
+                $sth->bindParam("email", $input['email']);
+                $sth->bindParam("direccion", $input['direccion']);
                 $sth->execute();
                 $resultado = $connection->lastInsertId();
-                $connection=null;
-                $resultado = array('respuesta' => true, 'resultado' => $resultado  );
-                $app->withJSON($resultado,200);
+                if(is_numeric($resultado)){
+                    $sql = "INSERT INTO socios VALUES (:cedula,:porcentaje)";
+                    $sth = $connection->prepare($sql);
+                    $sth->bindParam("cedula", $input['cedula']);
+                    $sth->bindParam("porcentaje", $input['porcentaje']);
+                    $sth->execute();
+                    $resultado = $connection->lastInsertId();
+                    $connection=null;
+                    $resultado = array('respuesta' => true, 'resultado' => $resultado  );
+                    $app->withJSON($resultado,200);                   
+                }else{
+                     $resultado = array('respuesta' => false, 'resultado' => "Error al intentar registrar la persona."  );
+                    $app->withJSON($resultado,400);  
+                }
+                
             }
         
         }catch(PDOException $e){
