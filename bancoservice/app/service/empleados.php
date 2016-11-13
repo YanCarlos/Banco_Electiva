@@ -69,11 +69,11 @@
                         $resultado = array('respuesta' => true, 'resultado' => $resultado  );
                         $app->withJSON($resultado,200);                   
                     }else{
-                         $resultado = array('respuesta' => false, 'resultado' => "Error al intentar registrar la persona."  );
+                         $resultado = array('respuesta' => false, 'mensaje' => "Error al intentar registrar la persona."  );
                         $app->withJSON($resultado,400);  
                     }
                 }else{
-                     $resultado = array('respuesta' => false, 'resultado' => "Esa persona ya esta registrada en la base de datos."  );
+                     $resultado = array('respuesta' => false, 'mensaje' => "Esa persona ya esta registrada en la base de datos."  );
                         $app->withJSON($resultado,400);  
                 }
                 
