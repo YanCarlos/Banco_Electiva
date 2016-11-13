@@ -1,5 +1,5 @@
 "use strict";
-app.controller('bancoController', function ($scope, $window, $timeout, bancoService) {
+app.controller('sociosController', function ($scope, $window, $timeout, sociosService) {
 	$scope.msj="";
 	$scope.registrar=function(){
 		bancoService.registrar($scope.nombre, $scope.nit, $scope.vision, $scope.mision).then(function (response) {

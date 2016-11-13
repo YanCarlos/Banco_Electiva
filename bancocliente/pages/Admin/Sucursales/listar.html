@@ -8,7 +8,7 @@
     </ol>
 </section>
 
-<section class="content" ng-controller="bancoController" ng-init="listarSucursales();">
+<section class="content" ng-controller="sucursalController" ng-init="listarSucursales();">
     <h3 style="text-align: center;"><b>Listado de Sucursales</b></h3>
     <hr>
     <div class="row">
@@ -53,7 +53,7 @@
                         <td>
                             <div id="acciones-row">
                                 <ul class="acciones-button" style="list-style: none;">
-                                    <li data-toggle="modal" data-target="#myModal" ng-click="datos(obj);"><a role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                    <li ng-click="datos(obj);" data-toggle="modal" data-target="#myModal" ><a role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </td>
@@ -78,7 +78,7 @@
         <h4 class="modal-title" id="myModalLabel">Modificar datos del banco</h4>
       </div>
       <div class="modal-body">
-        <section class="content" ng-controller="bancoController">
+        <section class="content" ng-controller="sucursalController">
     
     
     <div class="row">

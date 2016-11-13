@@ -51,6 +51,7 @@ $app->get("/banco",function() use($app){
 
  /* Metodo que registra los datos del banco*/
   	$app->post('/banco', function () use($app) {
+
         try{
             $input= $app->request->params();
             if ( !isset($input['nombre']) || !isset($input['nit']) || !isset($input['mision'])
@@ -59,21 +60,29 @@ $app->get("/banco",function() use($app){
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection();
-                $sql = "INSERT INTO banco VALUES (null,:nombre,:nit,:vision,:mision, null)";
-                $sth = $connection->prepare($sql);
-                $sth->bindParam("nombre", $input['nombre']);
-                $sth->bindParam("nit", $input['nit']);
-                $sth->bindParam("vision", $input['vision']);
-                $sth->bindParam("mision", $input['mision']);
-                $sth->execute();
-                 $connection=null;  
-                $resultado = $connection->lastInsertId();
-                $resultado=array('resultado' =>true, 'mensaje' =>$resultado );
-                $app->withJSON($resultado,200);
-               
+                $dbf=$connection->prepare("SELECT * FROM banco LIMIT 1;");
+                $dbf->execute();
+                $resultado= $dbf->fetchObject();
+                if($resultado==false){
+                    $sql = "INSERT INTO banco VALUES (null,:nombre,:nit,:vision,:mision, null)";
+                    $sth = $connection->prepare($sql);
+                    $sth->bindParam("nombre", $input['nombre']);
+                    $sth->bindParam("nit", $input['nit']);
+                    $sth->bindParam("vision", $input['vision']);
+                    $sth->bindParam("mision", $input['mision']);
+                    $sth->execute();
+                    $resultado = $connection->lastInsertId();
+                    $resultado=array('respuesta' =>true, 'resultado' =>$resultado );
+                    $app->withJSON($resultado,200);
+                    $connection=null;               
+                }else{
+                    $resultado = array('respuesta' => false, 'mensaje' => 'Ya existe un banco.');
+                    $app->withJSON($resultado,400);
+                }
+
             }
         }catch(PDOException $e){
-             $resultado=array('resultado' => false, 'mensaje' =>$e->getMessage());
+             $resultado=array('respuesta' => false, 'mensaje' =>$e->getMessage());
              $app->withJSON($resultado,400);
         }    
     });
@@ -89,12 +98,12 @@ $app->put('/banco', function () use($app) {
         try{
             $input= $app->request->params();
             if (!isset($input['id']) || !isset($input['nombre']) || !isset($input['nit']) || !isset($input['mision'])
-                || !isset($input['vision']) || !isset($input['sede']) || !isset($input['usuario']) || !isset($input['password'])) {
+                || !isset($input['vision'])) {
                 $resultado = array('respuesta' => false, 'mensaje' => 'Faltan parametros para modificar los datos del banco.');
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection();               	
-                $sql = "UPDATE banco SET nombre=:nombre,nit=:nit,vision=:vision,mision=:mision,sede=:sede WHERE id=:id";
+                $sql = "UPDATE banco SET nombre=:nombre,nit=:nit,vision=:vision,mision=:mision WHERE id=:id";
                 $sth = $connection->prepare($sql);
                 $sth->bindParam("id", $input['id']);
                 $sth->bindParam("nombre", $input['nombre']);

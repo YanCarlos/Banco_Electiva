@@ -11,6 +11,14 @@ app.config(function ($routeProvider) {
                 controller:'bancoController',
                 templateUrl: 'pages/Admin/Banco/listar.html'
             })
+            .when('/Socios/Registrar', {
+                controller:'sociosController',
+                templateUrl: 'pages/Admin/Socios/Crear.html'
+            })
+            .when('/Socios/Listar', {
+                controller:'sociosController',
+                templateUrl: 'pages/Admin/Socios/listar.html'
+            })
             .when('/Sucursales/Registrar', {
                 controller:'sucursalController',
                 templateUrl: 'pages/Admin/Sucursales/Crear.html'

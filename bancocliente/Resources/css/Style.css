@@ -7,6 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.classError{
+  color:  #EF5350;
+}
+.classSuccess{
+  color: #26A69A;
+}
 /* Pen Title */
 .pen-title {
   padding: 50px 0;

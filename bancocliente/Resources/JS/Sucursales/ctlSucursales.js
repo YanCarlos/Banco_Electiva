@@ -49,6 +49,7 @@ app.controller('sucursalController', function ($scope, $window, sucursalesServic
         );
 	}
 	$scope.listarMunicipios=function(){
+		alert($scope.depto);
 		sucursalesService.listarMunicipios($scope.depto).then(
 			function (response) {
 				$scope.municipios=response.data.resultado;
@@ -63,7 +64,6 @@ app.controller('sucursalController', function ($scope, $window, sucursalesServic
 	}
 
 	$scope.datos=function(obj){
-		console.log(obj);
 		$scope.cargar();
 		$scope.nombre=obj.nombre;
 		$scope.gerente=obj.id_gerente;
