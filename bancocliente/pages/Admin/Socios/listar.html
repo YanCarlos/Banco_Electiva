@@ -8,7 +8,7 @@
         <li class="active">Listado</li>
     </ol>
 </section>
-<div ng-controller="bancoController" ng-init="listarBancos();">
+<div ng-controller="sociosController" ng-init="listarSocios();">
 <section class="content">
     <h3 style="text-align: center;"><b>Listado de Bancos</b></h3>
     <hr>
@@ -21,20 +21,24 @@
                             <a ng-click="">#</a>
                             <a class="caret" ng-click=""></a>
                         </th>
+                         <th class="seleccionable">
+                            <a ng-click="">Cedula</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
                         <th class="seleccionable">
                             <a ng-click="">Nombre</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Nit</a>
+                            <a ng-click="">Email</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Visión</a>
+                            <a ng-click="">Ciudad</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Misión</a>
+                            <a ng-click="">Porcentaje</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
@@ -44,13 +48,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="seleccionable" ng-repeat="obj in bancos">
+                    <tr class="seleccionable" ng-repeat="obj in socios">
                         <th>{{$index+1}}</th>
-                        <td style="display:none;">{{obj.id}}</td>
-                        <td>{{obj.nombre}}</td>
-                        <td>{{obj.nit}}</td>
-                        <td>{{obj.vision}}</td>
-                        <td>{{obj.mision}}</td>
+                        <td style="display:none;">{{obj.cedula}}</td>
+                         <td>{{obj.cedula}}</td>
+                        <td>{{obj.nombre}} {{obj.apellidos}}</td>
+                        <td>{{obj.email}}</td>
+                        <td>{{obj.ciudad}}</td>
+                        <td>{{obj.porcentaje}}%</td>
                         <td>
                             <div id="acciones-row">
                                 <ul class="acciones-button" style="list-style: none;">

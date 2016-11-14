@@ -20,6 +20,9 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         );
     }
 
+
+
+
     $scope.calPorcentaje=function(){
         sociosService.calPorcentaje().then(function(response){
             console.log(response);
@@ -28,6 +31,18 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
             };
             
         });
+    }
+
+
+     $scope.listarSocios=function(){
+        sociosService.listarSocios().then(
+            function (response) {
+                console.log(response);
+                $scope.socios=response.data.resultado;
+                console.log($scope.socios);
+                
+            }
+        );
     }
 
 	$scope.registrar=function(){
@@ -44,6 +59,7 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
             	console.log(response);
             	$scope.colorText='error';
             	$scope.msj=response.data.mensaje;
+                console.log($scope.msj);
             	$timeout( function(){ $scope.msj=""; }, 3000);
             }
         });

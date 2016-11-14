@@ -43,6 +43,23 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
         return promise;
     }
 
+
+     this.listarSocios=function(){
+        var promise = $http({
+            method: "get",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/socios",
+            data: $httpParamSerializerJQLike({}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function mySucces(response) {
+            return response;
+        }, function myError(response) {
+            return response;
+        });
+
+        /*Luego se retorna la promesa*/
+        return promise;
+    }
+
     this.listarMunicipios=function(departamento){
         var promise = $http({
             method: "get",
