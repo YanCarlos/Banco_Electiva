@@ -90,16 +90,20 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
         return promise;
     }
 
-    this.editar = function (id, nombre, nit, vision, mision) {
+    this.editar = function (nombre, apellidos, cedula, fecha, telefono, correo, ciudad, direccion, porcentaje) {
         var promise = $http({
             method: "put",
             url: "http://localhost:8080/Banco_electiva/bancoservice/banco",
             data: $httpParamSerializerJQLike({
-                id: id,
+                cedula: cedula,
                 nombre: nombre,
-                nit: nit,
-                vision: vision,
-                mision: mision}),
+                apellidos: apellidos,
+                fecha_nacimiento: fecha,
+                ciudad: ciudad,
+                telefono: telefono,
+                email: correo,
+                direccion: direccion,
+                porcentaje: porcentaje}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function mySucces(response) {
             return response;

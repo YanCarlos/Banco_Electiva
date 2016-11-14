@@ -1,16 +1,16 @@
-<div>
+<div ng-controller="sociosController">
 <section class="content-header">
     <h1>
         Sistema bancario StartBank
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa  fa-university"></i> Banco</a></li>
+        <li><a href="#"><i class="fa  fa-users"></i> Socios</a></li>
         <li class="active">Listado</li>
     </ol>
 </section>
-<div ng-controller="sociosController" ng-init="listarSocios();">
+<div ng-init="listarSocios();">
 <section class="content">
-    <h3 style="text-align: center;"><b>Listado de Bancos</b></h3>
+    <h3 style="text-align: center;"><b>Listado de Socios</b></h3>
     <hr>
     <div class="row">
         <div class="col-md-12">
@@ -81,52 +81,77 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modificar datos del banco</h4>
+        <h4 class="modal-title" id="myModalLabel">Modificar datos del socio</h4>
       </div>
       <div class="modal-body">
         <section class="content">
     
     
     <div class="row">
-        <div class="col-md-1">
-            
-        </div>
-        <div class="col-md-10" style="display: flex; justify-content: center; flex-direction: column;">
-          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left">
-            <input type="hidden" ng-model="id" id="id"/>
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span></label>
-              <div class="col-md-8 col-sm-6 col-xs-12">
-                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="nombre">
+        <div class="col-md-12" style="display: flex; justify-content: center; flex-direction: column;">
+          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="editar();">
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="nombre">Nombre(s)</label>
+                      <input class="form-control" type="text" required placeholder="Nombre(s) del socio" ng-model="nombre">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="cedula">Cedula</label>
+                      <input class="form-control" type="number" min="0" required  readonly placeholder="Cedula del socio" ng-model="cedula">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="telefono">Teléfono</label>
+                      <input class="form-control" type="number" required placeholder="Teléfono del socio" ng-model="telefono">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                    <label for="depto">Departamento</label>
+                    <select ng-model="depto" class="form-control col-md-7 col-xs-12" ng-change="listarMunicipios();">
+                      <option ng-repeat=" obj in deptos" value="{{obj.id}}" >{{obj.nombre}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="direccion">Dirección del socio</label>
+                      <input class="form-control" type="text" required placeholder="Direccion del socio" ng-model="direccion">
+                  </div>
+                  
               </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nit <span class="required">*</span></label>
-              <div class="col-md-8 col-sm-6 col-xs-12">
-                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="nit">
+              <div class="col-md-6">
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="apellidos">Apellidos</label>
+                      <input class="form-control" type="text" required placeholder="Apellidos del socio" ng-model="apellidos">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="fecha">Fecha de nacimiento</label>
+                      <input class="form-control" type="date" required placeholder="Fecha de nacimiento del socio" ng-model="fecha">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="correo">Correo electrónico</label>
+                      <input class="form-control" type="email" required placeholder="Correo electrónico del socio" ng-model="correo">
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="ciudad">Ciudad</label>
+                      <select ng-model="ciudad" class="form-control col-md-7 col-xs-12">
+                        <option ng-repeat=" obj in municipios" value="{{obj.id}}" >{{obj.nombre}}</option>
+                      </select>                      
+                  </div>
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="porcentaje">Porcentaje (disponible {{porDisponible}}%)</label>
+                      <input class="form-control" type="number" min="1" max="{{porDisponible}}" required placeholder="Porcentaje de participación del socio" ng-model="porcentaje">
+                  </div>
               </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
             </div>
-            <div class="form-group">
-              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Visión <span class="required">*</span></label>
-              <div class="col-md-8 col-sm-6 col-xs-12">
-                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="vision">
-              </div>
+            <div class="col-md-3">
+                <input type="button" class="btn btn-primary btn-block btn-flat" data-dismiss="modal" value="Cancel"/>
             </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Misión<span class="required">*</span></label>
-              <div class="col-md-8 col-sm-6 col-xs-12">
-                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" ng-model="mision">
-              </div>
+            <div class="col-md-3">
+              <input type="submit" class="btn btn-success btn-block btn-flat" value="Actualizar">
             </div>
-            <div class="ln_solid"></div>
-            <div class="form-group">
-              <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
-                <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel"/>
-                <button type="submit" class="btn btn-success" ng-click="editar();">Actualizar</button>
-              </div>
-            </div>
-            <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
+          </div>
           </form>
         </div>
         <!-- /.col -->

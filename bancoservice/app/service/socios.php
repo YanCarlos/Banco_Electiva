@@ -9,9 +9,7 @@
 	/*Metodo que retorna todas las sucursales ordenadas por el nombre*/
     $app->get('/socios', function () use($app) {
     	$connection= getConnection();
-        $sth = $connection->prepare("select p.cedula as cedula,p.nombre as nombre,p.apellidos as apellidos,
-                                     p.email as email, c.nombre as ciudad,s.porcentaje as porcentaje
-                                     from socios s join personas p on p.cedula=s.persona join ciudades c on c.id=p.ciudad");
+        $sth = $connection->prepare("SELECT p.cedula, p.nombre, p.fecha_nacimiento as fecha, p.apellidos, p.email, c.nombre AS ciudad, c.id AS id_ciudad, d.id AS id_depto, d.nombre as depto, s.porcentaje, p.telefono, p.direccion FROM socios s JOIN personas p ON p.cedula=s.persona JOIN ciudades c ON c.id=p.ciudad JOIN departamentos D ON C.departamento=d.id;");
         $sth->execute();
         $resultado = $sth->fetchAll(PDO::FETCH_ASSOC);
         $connection=null;

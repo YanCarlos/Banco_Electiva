@@ -25,7 +25,6 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
 
     $scope.calPorcentaje=function(){
         sociosService.calPorcentaje().then(function(response){
-            console.log(response);
             if (response.data.respuesta) {
                 $scope.porDisponible=response.data.resultado.resto;
             };
@@ -37,9 +36,7 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
      $scope.listarSocios=function(){
         sociosService.listarSocios().then(
             function (response) {
-                console.log(response);
                 $scope.socios=response.data.resultado;
-                console.log($scope.socios);
                 
             }
         );
@@ -49,30 +46,30 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         sociosService.registrar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
          $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
             if (response.data.respuesta) {
-            	console.log(response);
             	$scope.colorText='success';
             	$scope.msj='Registrado exitosamente!';
             	$scope.limpiar();
             	$timeout( function(){ $scope.msj=""; }, 3000);
             	
             }else{
-            	console.log(response);
             	$scope.colorText='error';
             	$scope.msj=response.data.mensaje;
-                console.log($scope.msj);
             	$timeout( function(){ $scope.msj=""; }, 3000);
             }
         });
 	}
+
 	$scope.editar=function(){
-		sociosService.editar($scope.id, $scope.nombre, $scope.nit, $scope.vision, $scope.mision).then(function (response) {
+        alert("hola");
+		sociosService.editar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
+         $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
+            console.log(response);
             if (response.data.resultado) {
             	$scope.colorText='success';
             	$scope.msj='Editado exitosamente!';
             	$scope.listarBancos();
             	$timeout( function(){ $scope.msj=""; }, 3000);
             }else{
-            	console.log(response);
             	$scope.colorText='error';
             	$scope.msj=response.data.mensaje;
             	$timeout( function(){ $scope.msj=""; }, 3000);
@@ -101,10 +98,18 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         $scope.calPorcentaje();
 	}
 	$scope.datos=function(obj){
-		$scope.id=obj.id;
 		$scope.nombre=obj.nombre;
-		$scope.nit=obj.nit;
-		$scope.vision=obj.vision;
-		$scope.mision=obj.mision;
+		$scope.apellidos=obj.apellidos;
+        $scope.cedula = parseInt(obj.cedula, 10);
+        $scope.fecha= new Date(obj.fecha);
+        $scope.telefono= parseInt(obj.telefono, 10);
+        $scope.correo=obj.email
+        $scope.listarDeptos();
+        $scope.depto=obj.id_depto;
+        $scope.listarMunicipios();
+        $scope.ciudad=obj.id_ciudad;
+        $scope.direccion=obj.direccion;
+        $scope.calPorcentaje();
+        $scope.porcentaje=parseInt(obj.porcentaje,10);
 	}
 });
