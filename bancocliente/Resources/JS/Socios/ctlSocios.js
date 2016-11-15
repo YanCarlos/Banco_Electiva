@@ -60,6 +60,7 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
 	}
 
 	$scope.editar=function(){
+        alert("hola");
 		sociosService.editar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
          $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
             console.log(response);

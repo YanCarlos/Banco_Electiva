@@ -93,7 +93,7 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
     this.editar = function (nombre, apellidos, cedula, fecha, telefono, correo, ciudad, direccion, porcentaje) {
         var promise = $http({
             method: "put",
-            url: "http://localhost:8080/Banco_electiva/bancoservice/socio",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/banco",
             data: $httpParamSerializerJQLike({
                 cedula: cedula,
                 nombre: nombre,
