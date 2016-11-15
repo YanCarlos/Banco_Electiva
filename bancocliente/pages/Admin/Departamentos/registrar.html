@@ -1,0 +1,48 @@
+<section class="content-header">
+    <h1>
+        Sistema bancario StartBank
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-university"></i> Banco</a></li>
+        <li class="active">Registro</li>
+        <li class="active">Departamentos</li>
+    </ol>
+</section>
+
+<section class="content" ng-controller="departamentoController" >
+    <h3 style="text-align: center;"><b>Registro de departamento</b></h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-8">
+          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="registrar();">
+            <div class="row">
+              <div class="col-md-8">
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="nombre">Nombre(s)</label>
+                      <input class="form-control" type="text" required placeholder="Nombre(s) del departamento" ng-model="nombre">
+                  </div>
+                  
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
+            </div>
+            <div class="col-md-2">
+              <input type="button" class="btn btn-primary btn-block btn-flat" ng-click="limpiar();" value="Cancel"/>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success btn-block btn-flat" type="submit">
+                Registrar
+              </button>
+            </div>
+          </div>
+          </form>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

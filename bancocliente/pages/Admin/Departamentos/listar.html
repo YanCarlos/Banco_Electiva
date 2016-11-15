@@ -1,0 +1,115 @@
+<div>
+<section class="content-header">
+    <h1>
+        Sistema bancario StartBank
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa  fa-university"></i> Banco</a></li>
+        <li class="active">Listado</li>
+    </ol>
+</section>
+<div ng-controller="departamentoController" ng-init="listarDepartamentos();">
+<section class="content">
+    <h3 style="text-align: center;"><b>Listado de Departamentos</b></h3>
+     <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a ng-click="">#</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                         <th class="seleccionable">
+                            <a ng-click="">Nombre</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+        
+                        <th class="seleccionable">
+                            <a ng-click="">Pais</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                        <th class="seleccionable">
+                            <a ng-click="">Acciones</a>
+                            <a class="caret" ng-click=""></a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="seleccionable" ng-repeat="obj in deptos">
+                        <th>{{$index+1}}</th>
+                        <td style="display:none;">{{obj.id}}</td>
+                         <td>{{obj.nombre}}</td>
+                    
+                        <td>{{obj.pais}}</td>
+                        <td>
+                            <div id="acciones-row">
+                                <ul class="acciones-button" style="list-style: none; display: inline-flex;">
+                                    <li style="margin-right: 10px;" data-toggle="modal" data-target="#myModal" ng-click="datos(obj);"><a role="button"><i class="fa fa-pencil" aria-hidden="true"></i> </a></li>
+                                    
+                                     <li ng-click="eliminar(obj);" ><a role="button" ><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modificar datos del departamento</h4>
+      </div>
+      <div class="modal-body">
+        <section class="content" style="    min-height: 120px !important;">
+    
+    
+    <div class="row">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-10" style="display: flex; justify-content: center; flex-direction: column;">
+          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left">
+            <input type="hidden" ng-model="id" id="id"/>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span></label>
+              <div class="col-md-8 col-sm-6 col-xs-12">
+                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="nombre">
+              </div>
+            </div>
+            
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-6">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel"/>
+                <button type="submit" class="btn btn-success" ng-click="editar();">Actualizar</button>
+              </div>
+            </div>
+            <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
+          </form>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>

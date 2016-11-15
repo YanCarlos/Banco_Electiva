@@ -1,0 +1,56 @@
+<section class="content-header">
+    <h1>
+        Sistema bancario StartBank
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-university"></i> Banco</a></li>
+        <li class="active">Registro</li>
+        <li class="active">Ciudad</li>
+    </ol>
+</section>
+
+<section class="content" ng-controller="ciudadController" ng-init="listarDepartamentos();">
+    <h3 style="text-align: center;"><b>Registro Ciudad</b></h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-8">
+          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="registrar();">
+            <div class="row">
+              <div class="col-md-8">
+                  <div class="form-group" style="margin-right:0%;">
+                      <label for="nombre">Nombre(s)</label>
+                      <input class="form-control" type="text" required placeholder="Nombre(s) de la ciudad" ng-model="nombre">
+                  </div>
+                    <div class="form-group">
+             <label for="nombre">Departamento</label>
+              
+                <select ng-model="depto" class="form-control col-md-7 col-xs-12" >
+                  <option ng-repeat=" obj in deptos" value="{{obj.id}}" >{{obj.nombre}}</option>
+                </select>
+             
+            </div>
+                  
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
+            </div>
+            <div class="col-md-2">
+              <input type="button" class="btn btn-primary btn-block btn-flat" ng-click="limpiar();" value="Cancel"/>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success btn-block btn-flat" type="submit">
+                Registrar
+              </button>
+            </div>
+          </div>
+          </form>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
