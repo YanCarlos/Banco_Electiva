@@ -27,6 +27,22 @@ app.config(function ($routeProvider) {
                 controller:'sucursalController',
                 templateUrl: 'pages/Admin/Sucursales/listar.html'
             })
+            .when('/Departamentos/Listar', {
+                controller:'departamentoController',
+                templateUrl: 'pages/Admin/Departamentos/listar.html'
+            })
+            .when('/Departamentos/Registrar', {
+                controller:'departamentoController',
+                templateUrl: 'pages/Admin/Departamentos/registrar.html'
+            })
+            .when('/Ciudades/Registrar', {
+                controller:'ciudadController',
+                templateUrl: 'pages/Admin/Ciudades/registrar.html'
+            })
+            .when('/Ciudades/Listar', {
+                controller:'ciudadController',
+                templateUrl: 'pages/Admin/Ciudades/listar.html'
+            })
             .otherwise({
                 redirectTo: '/'
             });
