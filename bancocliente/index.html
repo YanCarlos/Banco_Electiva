@@ -27,6 +27,13 @@
       <div class="form">
         <h2>Login</h2>
         <form ng-submit="login();">
+                <label>Tipo de usuario</label>
+                <select ng-model="tipo" style="height: 30px;" >
+                <option selected="selected" disabled>Seleccione</option>
+                  <option value="1" >Webmaster</option>
+                  <option value="2" >Gerente</option>
+                </select>
+            
           <input name="cedula" type="text" placeholder="Cedula..." required="required" ng-model="cedula"/>
           <input name="password" type="password" placeholder="Password..." required="required" ng-model="password"/>
           <button>Entrar</button>
