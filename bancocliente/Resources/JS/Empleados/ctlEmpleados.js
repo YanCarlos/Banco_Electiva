@@ -1,9 +1,9 @@
 "use strict";
-app.controller('sociosController', function ($scope, $window, $timeout, sociosService) {
+app.controller('empleadosController', function ($scope, $window, $timeout, empleadosService) {
 	$scope.msj="";
     $scope.ciudad="0";
     $scope.listarDeptos=function(){
-        sociosService.listarDeptos().then(
+        empleadosService.listarDeptos().then(
             function (response) {
                 $scope.deptos=response.data.resultado;
                 $scope.depto='0';
@@ -12,7 +12,7 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
     }
 
     $scope.listarMunicipios=function(){
-        sociosService.listarMunicipios($scope.depto).then(
+        empleadosService.listarMunicipios($scope.depto).then(
             function (response) {
                 $scope.municipios=response.data.resultado;
                 $scope.ciudad="0";
@@ -20,31 +20,24 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         );
     }
 
-
-
-
-    $scope.calPorcentaje=function(){
-        sociosService.calPorcentaje().then(function(response){
-            if (response.data.respuesta) {
-                $scope.porDisponible=response.data.resultado.resto;
-            };
-            
+    $scope.listarSucursales=function(){
+        empleadosService.listarSucursales().then(function(response){
+            $scope.sucursales=response.data.resultado;
+            $scope.sucursal="0";
         });
     }
 
-
-     $scope.listarSocios=function(){
-        sociosService.listarSocios().then(
-            function (response) {
-                $scope.socios=response.data.resultado;
-                
-            }
-        );
+    $scope.listarCargos=function(){
+        empleadosService.listarCargos().then(function(response){
+            $scope.cargos=response.data.resultado;
+            $scope.cargo="0";
+        });
     }
 
 	$scope.registrar=function(){
-        sociosService.registrar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
-         $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
+        empleadosService.registrar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
+         $scope.ciudad, $scope.direccion, $scope.sucursal, $scope.cargo).then(function (response) {
+            console.log(response);
             if (response.data.respuesta) {
             	$scope.colorText='success';
             	$scope.msj='Registrado exitosamente!';
@@ -60,13 +53,13 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
 	}
 
 	$scope.editar=function(){
-		sociosService.editar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
-         $scope.ciudad, $scope.direccion, $scope.porcentaje).then(function (response) {
+		empleadosService.editar($scope.nombre, $scope.apellidos, $scope.cedula, $scope.fecha, $scope.telefono, $scope.correo,
+         $scope.ciudad, $scope.direccion, $scope.sucursal, $scope.cargo).then(function (response) {
             console.log(response);
             if (response.data.resultado) {
             	$scope.colorText='success';
             	$scope.msj='Editado exitosamente!';
-            	$scope.listarBancos();
+            	$scope.listarEmpleados();
             	$timeout( function(){ $scope.msj=""; }, 3000);
             }else{
             	$scope.colorText='error';
@@ -76,10 +69,10 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         });
 	}
 
-	$scope.listarBancos=function(){
-		sociosService.listarBancos().then(
+	$scope.listarEmpleados=function(){
+		empleadosService.listarEmpleados().then(
 			function (response) {
-				$scope.bancos=response.data.resultado;
+				$scope.empleados=response.data.resultado;
         	}
         );
 	}
@@ -93,8 +86,8 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         $scope.depto="0";
         $scope.ciudad="0";
         $scope.direccion="";
-        $scope.porcentaje="";
-        $scope.calPorcentaje();
+        $scope.sucursal="0";
+        $scope.cargo="0";
 	}
 	$scope.datos=function(obj){
 		$scope.nombre=obj.nombre;
@@ -108,7 +101,9 @@ app.controller('sociosController', function ($scope, $window, $timeout, sociosSe
         $scope.listarMunicipios();
         $scope.ciudad=obj.id_ciudad;
         $scope.direccion=obj.direccion;
-        $scope.calPorcentaje();
-        $scope.porcentaje=parseInt(obj.porcentaje,10);
+        $scope.listarSucursales();
+        $scope.sucursal=obj.id_sucursal;
+        $scope.listarCargos();
+        $scope.cargo=obj.id_cargo;
 	}
 });

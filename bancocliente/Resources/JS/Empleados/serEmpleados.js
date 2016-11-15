@@ -1,11 +1,11 @@
 "use strict";
 
-app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
+app.service('empleadosService', function ($http, $httpParamSerializerJQLike) {
     
-    this.registrar = function (nombre, apellidos, cedula, fecha, telefono, correo, ciudad, direccion, porcentaje) {
+    this.registrar = function (nombre, apellidos, cedula, fecha, telefono, correo, ciudad, direccion, sucursal, cargo) {
         var promise = $http({
             method: "post",
-            url: "http://localhost:8080/Banco_electiva/bancoservice/socio",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/empleado",
             data: $httpParamSerializerJQLike({
                 cedula: cedula,
                 nombre: nombre,
@@ -15,7 +15,8 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
                 telefono: telefono,
                 email: correo,
                 direccion: direccion,
-                porcentaje: porcentaje}),
+                sucursal: sucursal,
+                cargo: cargo}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function mySucces(response) {
             return response;
@@ -44,10 +45,10 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
     }
 
 
-     this.listarSocios=function(){
+    this.listarSucursales = function () {
         var promise = $http({
             method: "get",
-            url: "http://localhost:8080/Banco_electiva/bancoservice/socios",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/sucursales",
             data: $httpParamSerializerJQLike({}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function mySucces(response) {
@@ -58,7 +59,23 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
 
         /*Luego se retorna la promesa*/
         return promise;
-    }
+    };
+
+    this.listarCargos = function () {
+        var promise = $http({
+            method: "get",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/cargos",
+            data: $httpParamSerializerJQLike({}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function mySucces(response) {
+            return response;
+        }, function myError(response) {
+            return response;
+        });
+
+        /*Luego se retorna la promesa*/
+        return promise;
+    };
 
     this.listarMunicipios=function(departamento){
         var promise = $http({
@@ -75,25 +92,10 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
         return promise;
     }    
 
-    this.calPorcentaje=function(){
-        var promise = $http({
-            method: "get",
-            url: "http://localhost:8080/Banco_electiva/bancoservice/porcentaje",
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).then(function mySucces(response) {
-            return response;
-        }, function myError(response) {
-            return response;
-        });
-
-        /*Luego se retorna la promesa*/
-        return promise;
-    }
-
-    this.editar = function (nombre, apellidos, cedula, fecha, telefono, correo, ciudad, direccion, porcentaje) {
+    this.editar = function (nombre, apellidos, cedula, fecha, telefono, correo, ciudad, direccion, sucursal, cargo) {
         var promise = $http({
             method: "put",
-            url: "http://localhost:8080/Banco_electiva/bancoservice/socio",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/empleado",
             data: $httpParamSerializerJQLike({
                 cedula: cedula,
                 nombre: nombre,
@@ -103,7 +105,8 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
                 telefono: telefono,
                 email: correo,
                 direccion: direccion,
-                porcentaje: porcentaje}),
+                sucursal: sucursal,
+                cargo: cargo}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function mySucces(response) {
             return response;
@@ -115,10 +118,10 @@ app.service('sociosService', function ($http, $httpParamSerializerJQLike) {
         return promise;
     };
 
-    this.listarBancos = function () {
+    this.listarEmpleados = function () {
         var promise = $http({
             method: "get",
-            url: "http://localhost:8080/Banco_electiva/bancoservice/bancos",
+            url: "http://localhost:8080/Banco_electiva/bancoservice/empleados",
             data: $httpParamSerializerJQLike({}),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function mySucces(response) {

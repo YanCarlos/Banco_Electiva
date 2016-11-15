@@ -131,9 +131,9 @@
                 $app->withJSON($resultado,400);
             }else{
                 $connection= getConnection();
-                $sth = $connection->prepare("select * FROM socios WHERE cedula=" . $input["cedula"]);
+                $sth = $connection->prepare("select * FROM socios WHERE persona=" . $input["cedula"]);
                 $sth->execute();
-                $resultado=(array) $sth->fetchObject(); 
+                $resultado=$sth->fetchObject(); 
                 if ($resultado!=false) {
                     /*Modificamos en la tabla socios*/
                     $sql = "UPDATE socios SET porcentaje=:porcentaje WHERE persona=:cedula";
@@ -160,10 +160,10 @@
 
 
                     /*Retornamos el resultado*/
-                    $resultado=array('resultado' =>true, 'mensaje' =>'El socio ' . $resultado["cedula"] . ' fue modificado.' );
+                    $resultado=array('resultado' =>true, 'mensaje' =>'El socio fue modificado.' );
                     $app->withJSON($resultado,200);
                 }else{
-                    $resultado=array('resultado' => false, 'mensaje' =>'El socio con la cedula: ' . $input["id"] . ' no existe.' );
+                    $resultado=array('resultado' => false, 'mensaje' =>'El socio con la cedula: ' . $input["cedula"] . ' no existe.' );
                     $app->withJSON($resultado,400);
                 }   
                 $connection=null;

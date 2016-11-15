@@ -33,14 +33,17 @@
         <script src="Resources/JS/angular.min.js" type="text/javascript"></script>
         <script src="Resources/JS/route.js" type="text/javascript"></script>
         <script src="Resources/JS/General/appBank.js" type="text/javascript"></script>
+        <script src="Resources/JS/General/validate.js"></script>
         <script src="Resources/JS/Banco/ctlBanco.js" type="text/javascript"></script>
         <script src="Resources/JS/Banco/serBanco.js" type="text/javascript"></script>
         <script src="Resources/JS/Socios/ctlSocios.js" type="text/javascript"></script>
         <script src="Resources/JS/Socios/serSocios.js" type="text/javascript"></script>
         <script src="Resources/JS/Sucursales/ctlSucursales.js" type="text/javascript"></script>
         <script src="Resources/JS/Sucursales/serSucursales.js" type="text/javascript"></script>
+        <script src="Resources/JS/Empleados/ctlEmpleados.js" type="text/javascript"></script>
+        <script src="Resources/JS/Empleados/serEmpleados.js" type="text/javascript"></script>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini" ng-app="appBank" >
+    <body class="hold-transition skin-blue sidebar-mini" ng-app="appBank" ng-controller="CtlValidate">
         <div class="wrapper">
             <div ng-include="'pages/Templates/header.html'"></div>
             <div ng-include="'pages/Templates/Menus/menuAdmin.html'"></div>

@@ -53,11 +53,16 @@
                 <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="direccion">
               </div>
             </div>
-            <div class="ln_solid"></div>
-            <div class="form-group">
-              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <input type="button" class="btn btn-primary" ng-click="limpiar();" value="Cancel"/>
-                <input type="submit" class="btn btn-success" value="Registrar">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-3">
+                <label ng-class='{"classError": colorText=="error", "classSuccess":colorText=="success"}'>{{msj}}</label>
+              </div>
+              <div class="col-md-2">
+                <input type="button" class="btn btn-primary btn-block btn-flat" ng-click="limpiar();" value="Cancel"/>
+              </div>
+              <div class="col-md-2">
+                <input type="submit" class="btn btn-success btn-block btn-flat" value="Registrar">
               </div>
             </div>
           </form>
