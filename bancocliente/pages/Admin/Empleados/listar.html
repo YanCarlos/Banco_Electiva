@@ -1,16 +1,16 @@
-<div ng-controller="sociosController">
+<div ng-controller="empleadosController" ng-init="listarEmpleados();">
 <section class="content-header">
     <h1>
         Sistema bancario StartBank
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa  fa-users"></i> Socios</a></li>
+        <li><a href="#"><i class="fa  fa-users"></i> Empleados</a></li>
         <li class="active">Listado</li>
     </ol>
 </section>
-<div ng-init="listarSocios();">
+<div >
 <section class="content">
-    <h3 style="text-align: center;"><b>Listado de Socios</b></h3>
+    <h3 style="text-align: center;"><b>Listado de empleados</b></h3>
     <hr>
     <div class="row">
         <div class="col-md-12">
@@ -38,7 +38,7 @@
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
-                            <a ng-click="">Porcentaje</a>
+                            <a ng-click="">Sucursal (Cargo)</a>
                             <a class="caret" ng-click=""></a>
                         </th>
                         <th class="seleccionable">
@@ -48,18 +48,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="seleccionable" ng-repeat="obj in socios">
+                    <tr class="seleccionable" ng-repeat="obj in empleados">
                         <th>{{$index+1}}</th>
                         <td style="display:none;">{{obj.cedula}}</td>
                          <td>{{obj.cedula}}</td>
                         <td>{{obj.nombre}} {{obj.apellidos}}</td>
                         <td>{{obj.email}}</td>
-                        <td>{{obj.ciudad}}</td>
-                        <td>{{obj.porcentaje}}%</td>
+                        <td>{{obj.ciudad}} ({{obj.depto}})</td>
+                        <td>{{obj.sucursal}} ({{obj.cargo}})</td>
                         <td>
                             <div id="acciones-row">
                                 <ul class="acciones-button" style="list-style: none;">
-                                    <li data-toggle="modal" data-target="#myModal" ng-click="datos(obj);"><a role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                                    <li data-toggle="modal" data-target="#myModal" ng-click="datos(obj);"><a role="button"><i class="fa fa-pencil" aria-hidden="true"></i>ac</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -81,7 +81,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modificar datos del socio</h4>
+        <h4 class="modal-title" id="myModalLabel">Modificar datos del empleado</h4>
       </div>
       <div class="modal-body">
         <section class="content">
@@ -89,55 +89,70 @@
     
     <div class="row">
         <div class="col-md-12" style="display: flex; justify-content: center; flex-direction: column;">
-          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="editar();">
+          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="registrar();">
             <div class="row">
               <div class="col-md-6">
                   <div class="form-group" style="margin-right:0%;">
                       <label for="nombre">Nombre(s)</label>
-                      <input class="form-control" type="text" required placeholder="Nombre(s) del socio" ng-model="nombre">
+                      <input class="form-control" type="text" required placeholder="Nombre(s) del empleado" ng-model="nombre">
                   </div>
                   <div class="form-group" style="margin-right:0%;">
                       <label for="cedula">Cedula</label>
-                      <input class="form-control" type="number" min="0" required  readonly placeholder="Cedula del socio" ng-model="cedula">
+                      <input class="form-control" type="number" min="0" required placeholder="Cedula del empleado" readonly ng-model="cedula">
                   </div>
                   <div class="form-group" style="margin-right:0%;">
                       <label for="telefono">Teléfono</label>
-                      <input class="form-control" type="number" required placeholder="Teléfono del socio" ng-model="telefono">
+                      <input class="form-control" type="number" required placeholder="Teléfono del empleado" ng-model="telefono">
+                  </div>
+                  <div class="form-group" style="margin-right:0%; margin-bottom:0px;">
+                    <label for="depto">Departamento y ciudad</label>
+                    <div class="row">
+                      <div class="col-md-6" style="padding-right:1.6px;">
+                        <select ng-model="depto" class="form-control col-md-7 col-xs-12" ng-change="listarMunicipios();">
+                          <option value='0'>Seleccione departamento</option>
+                          <option ng-repeat=" obj in deptos" value="{{obj.id}}" >{{obj.nombre}}</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6" style="padding-left:0px;">
+                        <select ng-model="ciudad" class="form-control col-md-7 col-xs-12">
+                          <option value="0">Seleccione una ciudad</option>
+                          <option ng-repeat=" obj in municipios" value="{{obj.id}}" >{{obj.nombre}}</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group" style="margin-right:0%;">
-                    <label for="depto">Departamento</label>
-                    <select ng-model="depto" class="form-control col-md-7 col-xs-12" ng-change="listarMunicipios();">
-                      <option ng-repeat=" obj in deptos" value="{{obj.id}}" >{{obj.nombre}}</option>
-                    </select>
-                  </div>
-                  <div class="form-group" style="margin-right:0%;">
-                      <label for="direccion">Dirección del socio</label>
-                      <input class="form-control" type="text" required placeholder="Direccion del socio" ng-model="direccion">
+                      <label for="sucursal">Sucursal</label>
+                      <select ng-model="sucursal" class="form-control col-md-7 col-xs-12">
+                        <option value="0">Seleccione una sucursal</option>
+                        <option ng-repeat=" obj in sucursales" value="{{obj.id}}" >{{obj.nombre}}</option>
+                      </select>
                   </div>
                   
               </div>
               <div class="col-md-6">
                   <div class="form-group" style="margin-right:0%;">
                       <label for="apellidos">Apellidos</label>
-                      <input class="form-control" type="text" required placeholder="Apellidos del socio" ng-model="apellidos">
+                      <input class="form-control" type="text" required placeholder="Apellidos del empleado" ng-model="apellidos">
                   </div>
                   <div class="form-group" style="margin-right:0%;">
                       <label for="fecha">Fecha de nacimiento</label>
-                      <input class="form-control" type="date" required placeholder="Fecha de nacimiento del socio" ng-model="fecha">
+                      <input class="form-control" type="date" required placeholder="Fecha de nacimiento del empleado" ng-model="fecha">
                   </div>
                   <div class="form-group" style="margin-right:0%;">
                       <label for="correo">Correo electrónico</label>
-                      <input class="form-control" type="email" required placeholder="Correo electrónico del socio" ng-model="correo">
+                      <input class="form-control" type="email" required placeholder="Correo electrónico del empleado" ng-model="correo">
+                  </div>
+                  <div class="form-group" style="margin-right:0%; margin-bottom:20px;">
+                      <label for="direccion">Dirección del empleado</label>
+                      <input class="form-control" type="text" required placeholder="Direccion del empleado" ng-model="direccion">
                   </div>
                   <div class="form-group" style="margin-right:0%;">
-                      <label for="ciudad">Ciudad</label>
-                      <select ng-model="ciudad" class="form-control col-md-7 col-xs-12">
-                        <option ng-repeat=" obj in municipios" value="{{obj.id}}" >{{obj.nombre}}</option>
-                      </select>                      
-                  </div>
-                  <div class="form-group" style="margin-right:0%;">
-                      <label for="porcentaje">Porcentaje (disponible {{porDisponible}}%)</label>
-                      <input class="form-control" type="number" min="1" max="{{porDisponible}}" required placeholder="Porcentaje de participación del socio" ng-model="porcentaje">
+                      <label for="cargo">Cargo</label>
+                      <select ng-model="cargo" class="form-control col-md-7 col-xs-12">
+                        <option value="0">Seleccione un cargo</option>
+                        <option ng-repeat=" obj in cargos" value="{{obj.id}}" >{{obj.descripcion}}</option>
+                      </select>
                   </div>
               </div>
           </div>

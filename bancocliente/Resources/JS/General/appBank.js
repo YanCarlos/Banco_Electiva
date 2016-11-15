@@ -27,6 +27,14 @@ app.config(function ($routeProvider) {
                 controller:'sucursalController',
                 templateUrl: 'pages/Admin/Sucursales/listar.html'
             })
+            .when('/Empleados/Registrar', {
+                controller:'sucursalController',
+                templateUrl: 'pages/Admin/Empleados/Crear.html'
+            })
+            .when('/Empleados/Listar', {
+                controller:'empleadosController',
+                templateUrl: 'pages/Admin/Empleados/listar.html'
+            })
             .otherwise({
                 redirectTo: '/'
             });

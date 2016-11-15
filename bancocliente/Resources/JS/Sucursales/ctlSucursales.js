@@ -1,12 +1,17 @@
 "use strict";
-app.controller('sucursalController', function ($scope, $window, sucursalesService) {
+app.controller('sucursalController', function ($scope, $window, $timeout, sucursalesService) {
+	$scope.msj="";
 	$scope.registrar=function(){
 		sucursalesService.registrar($scope.nombre, $scope.gerente, $scope.ciudad, $scope.direccion).then(function (response) {
             if (response.data.resultado) {
-            	alert('registrado exitosamente!');
+            	$scope.colorText='success';
+            	$scope.msj='Registrado exitosamente!';
             	$scope.limpiar();
+            	$timeout( function(){ $scope.msj=""; }, 3000);
             }else{
-            	alert('Ocurrio un error: '+response.data.mensaje);
+            	$scope.colorText='error';
+            	$scope.msj=response.data.mensaje;
+            	$timeout( function(){ $scope.msj=""; }, 3000);
             }
         });
 	}
@@ -14,10 +19,15 @@ app.controller('sucursalController', function ($scope, $window, sucursalesServic
 	$scope.editar=function(){
 		sucursalesService.editar($scope.id, $scope.nombre, $scope.gerente, $scope.ciudad, $scope.direccion).then(function (response) {
             if (response.data.resultado) {
-            	alert('Editado exitosamente!');
+            	$scope.colorText='success';
+            	$scope.msj='Editado exitosamente!';
             	$scope.limpiar();
+            	$scope.listarSucursales();
+            	$timeout( function(){ $scope.msj=""; }, 3000);
             }else{
-            	alert('Ocurrio un error: '+response.data.mensaje);
+            	$scope.colorText='error';
+            	$scope.msj=response.data.mensaje;
+            	$timeout( function(){ $scope.msj=""; }, 3000);
             }
         });
 	}
@@ -49,7 +59,6 @@ app.controller('sucursalController', function ($scope, $window, sucursalesServic
         );
 	}
 	$scope.listarMunicipios=function(){
-		alert($scope.depto);
 		sucursalesService.listarMunicipios($scope.depto).then(
 			function (response) {
 				$scope.municipios=response.data.resultado;
@@ -57,14 +66,17 @@ app.controller('sucursalController', function ($scope, $window, sucursalesServic
         );
 	}
 	$scope.limpiar= function(){
+		$scope.id="";
 		$scope.nombre="";
 		$scope.gerente="";
-		$scope.ciudad="";
+		$scope.depto="0";
+		$scope.ciudad="0";
 		$scope.direccion="";
 	}
 
 	$scope.datos=function(obj){
 		$scope.cargar();
+		$scope.id=obj.id;
 		$scope.nombre=obj.nombre;
 		$scope.gerente=obj.id_gerente;
 		$scope.depto=obj.id_departamento;
