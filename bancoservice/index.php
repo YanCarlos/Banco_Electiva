@@ -17,4 +17,5 @@ require("app/service/banco.php");
 require("app/service/sucursales.php");
 require("app/service/cargos.php");
 require("app/service/socios.php");
+require("app/service/tipocuentas.php");
 $app->run();

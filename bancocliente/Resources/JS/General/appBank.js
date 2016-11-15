@@ -43,6 +43,14 @@ app.config(function ($routeProvider) {
                 controller:'ciudadController',
                 templateUrl: 'pages/Admin/Ciudades/listar.html'
             })
+             .when('/Cuentas/Registrar', {
+                controller:'tipoCuentaController',
+                templateUrl: 'pages/Admin/Cuentas/registrar.html'
+            })
+            .when('/Cuentas/Listar', {
+                controller:'tipoCuentaController',
+                templateUrl: 'pages/Admin/Cuentas/listar.html'
+            })
             .otherwise({
                 redirectTo: '/'
             });
